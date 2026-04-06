@@ -1,0 +1,109 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import FaqSection from "../components/FaqSection.astro";
+import TechnicalSection from "../components/TechnicalSection.astro";
+import Footer from "../components/Footer.astro";
+import { platformFaqs } from "../data/faqs";
+
+const mainContent = [
+  {
+    h2: "The Architecture of Autonomous AI Agents 2026",
+    p: "TurboQuant Network is the world's most advanced <strong>AI Agent Platform</strong> designed for 100% mission-critical reliability. Our platform is built on the <strong>LangGraph orchestration core</strong>, which enables developers to engineer stateful, cyclic graphs of multi-agent reasoners. Whether you are building an <a href='/ai-kanban-board'>AI Kanban System</a> or a <a href='/ai-automation-system'>Reasoning-First Automation workflow</a>, TurboQuant provides the infrastructure for 2026 and beyond."
+  },
+  {
+    h3: "Multi-Agent Orchestration and Fleet Management",
+    p: "In a traditional single-LLM setup, models often suffer from context fatigue and hallucination. TurboQuant's <strong>Fleet Management System</strong> solves this through <strong>Multi-Agent Orchestration (MAO)</strong>. A fleet consists of specialized agents like the 'Planner', 'Reviewer', and 'Builder' who collaborate via our <strong>Blackboard State Architecture</strong> to deliver precise results."
+  },
+  {
+    h4: "Stateful Reasoning with LangGraph Persistent Memory",
+    p: "Consistency is key in enterprise AI. Our platform implements <strong>Persistent Context Checkpointing</strong>, ensured by the <strong>LangGraph core</strong>. If a mission is interrupted by a network failure, the agent can resume from its exact 'thought checkpoint' on any available <a href='/about'>DePIN compute node</a>, reducing token waste and improving mission uptime."
+  },
+  {
+    h5: "Sovereign Deployment and Data Residency",
+    p: "Data privacy is the foundation of the <strong>TurboQuant AI Work OS</strong>. Organizations can deploy the protocol within their own VPC using our <a href='/build-ai-agent'>Sovereign SDK</a>. This ensures that every agent tool-call and tool-output remains 100% private, satisfying <strong>GDPR, CCPA, and HIPAA</strong> standards for healthcare and legal automation."
+  }
+];
+
+const technicalSpecs = [
+  ...mainContent.map(c => ({ h3: c.h2 || c.h3 || c.h4, p: c.p }))
+];
+---
+
+<BaseLayout 
+  title="AI Agent Platform – #1 Autonomous Multi-Agent Orchestration 2026"
+  description="Build and deploy production-ready AI agents. Specialized multi-agent systems, LangGraph state management, and enterprise security."
+  canonical="https://turboquant.network/ai-agent-platform"
+>
+  <Navbar activePage="platform" />
+
+  <main>
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "AI Agent Platform" }]} />
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="center" style="margin-bottom: 56px;">
+          <div class="s-tag">AI Agent Platform</div>
+          <h1 class="s-h1">The World's Most Powerful <span class="hi">Multi-Agent</span> Ecosystem</h1>
+          <p class="s-sub">Coordinate specialized fleets of autonomous agents with industry-领先 state management and decentralized infrastructure.</p>
+          <div class="cta-actions center" style="margin-top: 32px">
+            <button class="btn-primary" onclick="notify('🚀 Launching TurboQuant Enterprise Hub...')">Start Building Now →</button>
+            <a href="/build-ai-agent" class="btn-ghost">View Developer SDK</a>
+          </div>
+        </div>
+
+        <div class="grid-3" style="margin-bottom: 60px;">
+           <FeatureCard 
+              icon="🤖" title="Agent Orchestration" 
+              description="Coordinate hundreds of specialized agents in parallel with shared state and episodic memory."
+              tags={["LangGraph", "MAM", "Fleets"]}
+           />
+           <FeatureCard 
+              icon="🔧" title="200+ SDK Connectors" 
+              description="Connect your agents to GitHub, Slack, AWS, and more with our high-fidelity connectors."
+              tags={["SDK", "Connectors", "OAuth2"]}
+           />
+           <FeatureCard 
+              icon="🔒" title="Sovereign Privacy" 
+              description="Zero data egress. Run 100% on your own infrastructure with local LLM and Docker support."
+              tags={["Docker", "K8s", "Self-Hosted"]}
+           />
+        </div>
+
+        <article class="technical-deep-dive">
+           {mainContent.map(section => (
+              <div class="content-block">
+                 {section.h2 && <h2 class="s-h2" style="font-size: 1.8rem; margin-top:40px">{section.h2}</h2>}
+                 {section.h3 && <h3 class="s-h2" style="font-size: 1.5rem; margin-top:30px">{section.h3}</h3>}
+                 {section.h4 && <h4 class="s-h2" style="font-size: 1.3rem; margin-top:25px">{section.h4}</h4>}
+                 {section.h5 && <h5 class="s-h2" style="font-size: 1.1rem; margin-top:20px">{section.h5}</h5>}
+                 <p style="font-size: 1rem; color: var(--text2); line-height: 1.8; margin-top: 15px;" set:html={section.p} />
+              </div>
+           ))}
+        </article>
+
+        <TechnicalSection tag="Engineering" title="High-Fidelity Multi-Agent Architecture" content={technicalSpecs} />
+
+        <FaqSection id="platform-faq" faqs={platformFaqs} />
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .s-h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+  .technical-deep-dive {
+    max-width: 900px;
+    margin: 80px auto;
+  }
+</style>

@@ -1,0 +1,128 @@
+---
+/* 
+  TurboQuant Base Layout — v4.4 PLATINUM SEO
+  Master Implementation of JSON-LD Graph, Voice SEO, and Web Vitals
+*/
+
+import "../styles/global.css";
+import { TRANSLATIONS } from "../data/translations";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonical?: string;
+  lang?: string;
+  type?: "website" | "article" | "SoftwareApplication";
+}
+
+const urlLang = Astro.url.searchParams.get('lang') || 'en';
+const {
+  title = "TurboQuant Network – #1 AI Agent Platform | 2026",
+  description = "The world's most powerful AI Agent Platform.",
+  ogImage = "https://turboquant.network/og-image.png",
+  canonical = `https://turboquant.network${Astro.url.pathname}`,
+  lang = urlLang,
+  type = "SoftwareApplication"
+} = Astro.props;
+
+const t = TRANSLATIONS[lang] || TRANSLATIONS.en;
+
+// ════════════ JSON-LD @GRAPH COMPOSITION ════════════
+const schemaGraph = {
+  "@context": "https://schema.org",
+  "@graph": [
+     {
+       "@type": "Organization",
+       "@id": "https://turboquant.network/#organization",
+       "name": "TurboQuant Network",
+       "url": "https://turboquant.network",
+       "logo": "https://turboquant.network/logo.png",
+       "sameAs": ["https://twitter.com/TurboQuantNet", "https://github.com/turboquant"]
+     },
+     {
+       "@type": "WebSite",
+       "@id": "https://turboquant.network/#website",
+       "url": "https://turboquant.network",
+       "name": "TurboQuant AI OS",
+       "publisher": { "@id": "https://turboquant.network/#organization" },
+       "potentialAction": {
+         "@type": "SearchAction",
+         "target": "https://turboquant.network/blog?q={search_term_string}",
+         "query-input": "required name=search_term_string"
+       }
+     },
+     {
+       "@type": "SoftwareApplication",
+       "@id": `https://turboquant.network/#software`,
+       "name": "TurboQuant AI Agent Platform",
+       "applicationCategory": "BusinessApplication",
+       "operatingSystem": "Web, Linux, Solana",
+       "offers": { "@type": "Offer", "price": "0.00", "priceCurrency": "USD" },
+       "featureList": ["Multi-Agent Orchestration", "DePIN Edge Compute", "AI Kanban Automation", "6x Cache Compression"]
+     }
+  ]
+};
+
+// BreadcrumbList logic
+const breadcrumbItems = [
+  { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://turboquant.network" }
+];
+if (Astro.url.pathname !== "/") {
+  breadcrumbItems.push({ "@type": "ListItem", "position": 2, "name": title, "item": canonical });
+}
+schemaGraph["@graph"].push({ "@type": "BreadcrumbList", "itemListElement": breadcrumbItems });
+---
+
+<!doctype html>
+<html lang={lang} prefix="og: https://ogp.me/ns#" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Core Web Vitals Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@800&display=swap" as="style" />
+
+    <!-- Multilingual Hreflang Tags -->
+    {["en", "hi", "ml", "es", "ja", "zh", "de", "fr"].map(l => (
+      <link rel="alternate" hreflang={l} href={`${canonical}?lang=${l}`} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href="https://turboquant.network/" />
+
+    <!-- Open Graph & Twitter -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- SEO Schema Graph -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaGraph)} />
+
+    <!-- Speakable SEO Specification -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "{title}",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", ".s-sub", "h2"]
+      }
+    }
+    </script>
+
+    <script define:vars={{ lang, translations: TRANSLATIONS }}>
+       window.TURBOQUANT_LANG = lang;
+       window.TURBOQUANT_TRANSLATIONS = translations;
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

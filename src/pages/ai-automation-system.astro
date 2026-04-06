@@ -1,0 +1,109 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import FaqSection from "../components/FaqSection.astro";
+import TechnicalSection from "../components/TechnicalSection.astro";
+import Footer from "../components/Footer.astro";
+import { automationFaqs } from "../data/faqs";
+
+const mainContent = [
+  {
+    h2: "The Era of Reasoning-First Automation Platform 2026",
+    p: "Traditional automation tools like Zapier and n8n are rule-based, meaning they lack the ability to adapt to unstructured data. TurboQuant's <strong>Reasoning-First Automation System</strong> uses LLMs as decision-makers within every node of the workflow. This ensures that your <a href='/ai-agent-platform'>AI Agent Fleets</a> can handle complex logic without manual intervention."
+  },
+  {
+    h3: "Self-Healing Workflows and Smart API Mapping",
+    p: "If an external API endpoint changes its data-schema, our automation node autonomously detects the mismatch and re-maps the payload using <strong>Semantic Field Alignment</strong>. This is critical for the stability of your <strong>TurboQuant AI Work OS</strong>."
+  },
+  {
+    h4: "Integrating the AI Kanban Board for Operational Observability",
+    p: "Every automated workflow is linked to the <strong>Self-Driving Kanban Board</strong>. This allows human operators to monitor agent missions in real-time and provides a clear <strong>Audit Trace</strong> for every decision made by the AI. This is a key feature of our <a href='/build-ai-agent'>Agent Builder SDK</a>."
+  },
+  {
+    h5: "Enterprise Scale with $EDGE Micropayments",
+    p: "In 2026, automation at scale requires decentralized efficiency. Every workflow execution on the <strong>TurboQuant network</strong> is powered by <a href='/about'>DePIN compute nodes</a> and paid for via <strong>$EDGE micropayments</strong> on the Solana blockchain."
+  }
+];
+
+const technicalSpecs = [
+  ...mainContent.map(c => ({ h3: c.h2 || c.h3 || c.h4, p: c.p }))
+];
+---
+
+<BaseLayout 
+  title="AI Automation System – #1 Intelligent Workflow Automation 2026"
+  description="Next-generation intelligent automation. TurboQuant combines reasoning-first workflows with 200+ native integrations and $EDGE utility."
+  canonical="https://turboquant.network/ai-automation-system"
+>
+  <Navbar activePage="automation" />
+
+  <main>
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "AI Automation System" }]} />
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="center" style="margin-bottom: 56px;">
+          <div class="s-tag">AI Automation</div>
+          <h1 class="s-h1">Intelligent <span class="hi">Reasoning</span>-First Automation</h1>
+          <p class="s-sub">Replace fragile rule-based automation with autonomous reasoning engines in the LangGraph core.</p>
+          <div class="cta-actions center" style="margin-top: 32px">
+            <button class="btn-primary" onclick="notify('🚀 Launching TurboQuant Automation Hub...')">Build Your Flow Now →</button>
+            <a href="/roadmap" class="btn-ghost" style="margin-left: 12px">View Deployment Roadmap</a>
+          </div>
+        </div>
+
+        <div class="grid-3" style="margin-bottom: 48px;">
+           <FeatureCard 
+              icon="⚡" title="Reasoning nodes" 
+              description="Embed AI reasoning nodes into every step of your workflow for absolute logical flexibility."
+              tags={["Reasoning", "Logic", "Dynamic"]}
+           />
+           <FeatureCard 
+              icon="🤝" title="200+ Integrations" 
+              description="Connect your favorite enterprise tools with native, semantic triggers and OAuth2 security."
+              tags={["API", "Webhook", "Triggers"]}
+           />
+           <FeatureCard 
+              icon="🔄" title="Self-Correction" 
+              description="Workflows that automatically adapt to API changes in the DePIN cloud."
+              tags={["Self-Healing", "Adaptation", "Uptime"]}
+           />
+        </div>
+
+        <article class="technical-deep-dive">
+           {mainContent.map(section => (
+              <div class="content-block">
+                 {section.h2 && <h2 class="s-h2" style="font-size: 1.8rem; margin-top:40px">{section.h2}</h2>}
+                 {section.h3 && <h3 class="s-h2" style="font-size: 1.5rem; margin-top:30px">{section.h3}</h3>}
+                 {section.h4 && <h4 class="s-h2" style="font-size: 1.3rem; margin-top:25px">{section.h4}</h4>}
+                 {section.h5 && <h5 class="s-h2" style="font-size: 1.1rem; margin-top:20px">{section.h5}</h5>}
+                 <p style="font-size: 1rem; color: var(--text2); line-height: 1.8; margin-top: 15px;" set:html={section.p} />
+              </div>
+           ))}
+        </article>
+
+        <TechnicalSection tag="Next-Gen Workflow" title="Intelligent Orchestration Technology" content={technicalSpecs} />
+
+        <FaqSection id="automation-faq" faqs={automationFaqs} />
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .s-h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+  .technical-deep-dive {
+    max-width: 900px;
+    margin: 80px auto;
+  }
+</style>

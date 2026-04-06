@@ -1,0 +1,109 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import FaqSection from "../components/FaqSection.astro";
+import TechnicalSection from "../components/TechnicalSection.astro";
+import Footer from "../components/Footer.astro";
+import { buildFaqs } from "../data/faqs";
+
+const mainContent = [
+  {
+    h2: "Engineering the Future with the TurboQuant Builder SDK",
+    p: "Unlock the full potential of <strong>Autonomous AI Engineering</strong> with our developer-first SDK. Build your first <a href='/ai-agent-platform'>AI Agent Fleet</a> in minutes using our <strong>LangGraph-native</strong> Python and TypeScript toolsets. This is the cornerstone of the <strong>TurboQuant AI Work OS</strong>."
+  },
+  {
+    h3: "Visual Agent Studio and No-Code Hierarchy",
+    p: "Not a developer? No problem. Our <strong>Visual Agent Studio</strong> allows you to design agent logic using a drag-and-drop interface. This is integrated with our <strong>Self-Driving Kanban Board</strong>, ensuring you can manage execution without writing a single line of code."
+  },
+  {
+    h4: "Persistent Context and Tiered Memory Layers",
+    p: "Agentic intelligence requires more than just a large context window. Our SDK enables <strong>Episodic and Semantic memory tiers</strong>, ensuring your agents recall past project history across the entire <a href='/ai-automation-system'>Automated Workflow</a>."
+  },
+  {
+    h5: "Secure Guardrails and Policy-Based Execution",
+    p: "Safety is built into the protocol. Define <strong>Agent Guardrails</strong> and <strong>Budget Policies</strong> to control inference spend and tool-access permissions. This is critical for <strong>Enterprise AI Compliance</strong> and <a href='/privacy-policy'>Data Privacy</a>."
+  }
+];
+
+const technicalSpecs = [
+  ...mainContent.map(c => ({ h3: c.h2 || c.h3 || c.h4, p: c.p }))
+];
+---
+
+<BaseLayout 
+  title="Build Your AI Agent – #1 AI Agent Builder & SDK 2026"
+  description="Build autonomous AI agents in minutes. Step-by-step guide, no-code studio, and developer SDK with tiered memory."
+  canonical="https://turboquant.network/build-ai-agent"
+>
+  <Navbar activePage="build" />
+
+  <main>
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Build AI Agent" }]} />
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="center" style="margin-bottom: 56px;">
+          <div class="s-tag">Build Your Agent</div>
+          <h1 class="s-h1">Build Your First <span class="hi">Autonomous</span> Agent</h1>
+          <p class="s-sub">The world's most intuitive environment for engineering production-ready AI agents using the LangGraph core.</p>
+          <div class="cta-actions center" style="margin-top: 32px">
+            <button class="btn-primary" onclick="notify('🏗️ Launching TurboQuant Agent Studio...')">Start Building Now →</button>
+            <a href="/roadmap" class="btn-ghost" style="margin-left: 12px">View 2026 Roadmap</a>
+          </div>
+        </div>
+
+        <div class="grid-3" style="margin-bottom: 48px;">
+           <FeatureCard 
+              icon="🏗️" title="Agent Studio" 
+              description="Visual builder for defining goals, tools, and agent logic hierarchies."
+              tags={["Visual", "Low-Code", "Presets"]}
+           />
+           <FeatureCard 
+              icon="🔧" title="Developer SDK" 
+              description="Full Python and TypeScript support for engineering custom agent fleets."
+              tags={["SDK", "API", "Developer"]}
+           />
+           <FeatureCard 
+              icon="🧩" title="Memory Layer" 
+              description="Set up persistent memory layers for your agents to recall past tasks."
+              tags={["RAG", "VectorDB", "LTM"]}
+           />
+        </div>
+
+        <article class="technical-deep-dive">
+           {mainContent.map(section => (
+              <div class="content-block">
+                 {section.h2 && <h2 class="s-h2" style="font-size: 1.8rem; margin-top:40px">{section.h2}</h2>}
+                 {section.h3 && <h3 class="s-h2" style="font-size: 1.5rem; margin-top:30px">{section.h3}</h3>}
+                 {section.h4 && <h4 class="s-h2" style="font-size: 1.3rem; margin-top:25px">{section.h4}</h4>}
+                 {section.h5 && <h5 class="s-h2" style="font-size: 1.1rem; margin-top:20px">{section.h5}</h5>}
+                 <p style="font-size: 1rem; color: var(--text2); line-height: 1.8; margin-top: 15px;" set:html={section.p} />
+              </div>
+           ))}
+        </article>
+
+        <TechnicalSection tag="Builder Guide" title="Agent Development Lifecycle" content={technicalSpecs} />
+
+        <FaqSection id="build-faq" faqs={buildFaqs} />
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .s-h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+  .technical-deep-dive {
+    max-width: 900px;
+    margin: 80px auto;
+  }
+</style>

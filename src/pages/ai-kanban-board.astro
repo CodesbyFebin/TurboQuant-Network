@@ -1,0 +1,109 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import FaqSection from "../components/FaqSection.astro";
+import TechnicalSection from "../components/TechnicalSection.astro";
+import Footer from "../components/Footer.astro";
+import { kanbanFaqs } from "../data/faqs";
+
+const mainContent = [
+  {
+    h2: "The World's Only Self-Driving Agile Kanban",
+    p: "Traditional tools like Jira and Trello merely track work; TurboQuant's <strong>AI Kanban Board</strong> executes work. Every card on our board is an active <a href='/ai-agent-platform'>AI Agent session</a> that can autonomously prioritize, assign, and execute its own backlog tasks. This is the foundation of the <strong>TurboQuant AI Work OS</strong>."
+  },
+  {
+    h3: "Autonomous Prioritization via WSJF (Weighted Shortest Job First)",
+    p: "In a fast-paced software environment, prioritization is often a bottleneck. Our board uses <strong>WSJF algorithms</strong> to automatically re-rank the backlog every 10 minutes based on real-world business impact and agent effort. This is accessible via our <a href='/build-ai-agent'>Agent Builder SDK</a> for deep customization."
+  },
+  {
+    h4: "Self-Healing Workflows and Mission Resiliency",
+    p: "If a task encounters a blocker, the board doesn't wait for human intervention. It triggers a <strong>Debugger Agent</strong> to analyze the logs, create a fix-task, and execute it autonomously. This resiliency is powered by the <strong>LangGraph orchestration core</strong>, which ensures persistent mission state across all your <a href='/ai-automation-system'>Automated Workflows</a>."
+  },
+  {
+    h5: "Real-Time Observability and Inference Trace Viewer",
+    p: "Mission transparency is key. Every card on the board has a <strong>Live Trace Viewer</strong> that shows the agent's internal thought chain, tool-calls, and command-line outputs in real-time. This is the cornerstone of our focus on <strong>Technical SEO</strong> and <strong>Operational Observability</strong>."
+  }
+];
+
+const technicalSpecs = [
+  ...mainContent.map(c => ({ h3: c.h2 || c.h3 || c.h4, p: c.p }))
+];
+---
+
+<BaseLayout 
+  title="AI Kanban Board – #1 Self-Driving AI Project Management 2026"
+  description="Manage projects autonomously. TurboQuant AI Kanban automates sprint planning and task execution using the LangGraph core."
+  canonical="https://turboquant.network/ai-kanban-board"
+>
+  <Navbar activePage="kanban" />
+
+  <main>
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "AI Kanban Board" }]} />
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="center" style="margin-bottom: 56px;">
+          <div class="s-tag">Self-Driving Kanban</div>
+          <h1 class="s-h1">The First <span class="hi">Self-Driving</span> Kanban Board</h1>
+          <p class="s-sub">TurboQuant's AI Kanban executes your entire project lifecycle 2026 24/7 without manual project management overhead.</p>
+          <div class="cta-actions center" style="margin-top: 32px">
+            <button class="btn-primary" onclick="notify('🚀 Launching TurboQuant Agile Dashboard...')">Open Your Board Now →</button>
+            <a href="/roadmap" class="btn-ghost" style="margin-left: 12px">View Platform Roadmap</a>
+          </div>
+        </div>
+
+        <div class="grid-3" style="margin-bottom: 48px;">
+           <FeatureCard 
+              icon="🎯" title="Goal Decomposition" 
+              description="Automatically turn high-level epics into granular task hierarchies with dependencies."
+              tags={["Recursive", "Dependencies", "Epics"]}
+           />
+           <FeatureCard 
+              icon="🔄" title="Execution" 
+              description="Watch agents pick up, execute, and deliver tasks directly from the board."
+              tags={["Execution", "Real-Time", "CLI"]}
+           />
+           <FeatureCard 
+              icon="📊" title="Observability" 
+              description="Sub-second streams of every agent decision, tool call, and output directly on the board."
+              tags={["Streams", "WebSockets", "Trace"]}
+           />
+        </div>
+
+        <article class="technical-deep-dive">
+           {mainContent.map(section => (
+              <div class="content-block">
+                 {section.h2 && <h2 class="s-h2" style="font-size: 1.8rem; margin-top:40px">{section.h2}</h2>}
+                 {section.h3 && <h3 class="s-h2" style="font-size: 1.5rem; margin-top:30px">{section.h3}</h3>}
+                 {section.h4 && <h4 class="s-h2" style="font-size: 1.3rem; margin-top:25px">{section.h4}</h4>}
+                 {section.h5 && <h5 class="s-h2" style="font-size: 1.1rem; margin-top:20px">{section.h5}</h5>}
+                 <p style="font-size: 1rem; color: var(--text2); line-height: 1.8; margin-top: 15px;" set:html={section.p} />
+              </div>
+           ))}
+        </article>
+
+        <TechnicalSection tag="Agile AI" title="Predictive & Self-Healing Project Orchestration" content={technicalSpecs} />
+
+        <FaqSection id="kanban-faq" faqs={kanbanFaqs} />
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .s-h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+  .technical-deep-dive {
+    max-width: 900px;
+    margin: 80px auto;
+  }
+</style>

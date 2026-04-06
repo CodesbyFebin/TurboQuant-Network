@@ -1,0 +1,109 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import FaqSection from "../components/FaqSection.astro";
+import TechnicalSection from "../components/TechnicalSection.astro";
+import Footer from "../components/Footer.astro";
+import { roadmapFaqs } from "../data/faqs";
+
+const mainContent = [
+  {
+    h2: "The Future of Autonomous AI: Our 12-Month Vision",
+    p: "TurboQuant's roadmap targets the transition from centralized AI to the global <strong>DePIN Work OS</strong>. Learn how to <a href='/ai-agent-platform'>Build AI Agents</a> using our 2026 core architecture. This mission covers 100% of our <a href='/about'>DePIN Expansion</a>."
+  },
+  {
+    h3: "Q1 2026: Multi-Agent Core with Stateful Persistence",
+    p: "Launch of the <strong>LangGraph-based core</strong> for complex, multi-turn reasoning. This is the cornerstone of our focus on <strong>Technical SEO</strong> and AI observability. Check out our <a href='/ai-kanban-board'>Self-Driving Kanban V1.0</a>."
+  },
+  {
+    h4: "Q2 2026: Agent Studio and Personalized Reward Layers",
+    p: "Rollout of the <strong>Visual Agent Studio</strong> for no-code development. This includes the <a href='/build-ai-agent'>Sovereign SDK</a> for enterprise compliance."
+  },
+  {
+    h5: "Q3–Q4 2026: Industrial Edge and Global DePIN Scale",
+    p: "Scaling to 100,000 active compute nodes. This enables the first <strong>Autonomous IoT Networks</strong> and the full <a href='/ai-automation-system'>Intelligent Workflow suite</a>."
+  }
+];
+
+const technicalSpecs = [
+  ...mainContent.map(c => ({ h3: c.h2 || c.h3 || c.h4, p: c.p }))
+];
+---
+
+<BaseLayout 
+  title="Project Roadmap 2026 – #1 Autonomous AI Milestone Tracker"
+  description="Follow the development of TurboQuant. Monthly milestones and the roadmap to a decentralized Work OS."
+  canonical="https://turboquant.network/roadmap"
+>
+  <Navbar activePage="roadmap" />
+
+  <main>
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Roadmap 2026" }]} />
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="center" style="margin-bottom: 56px;">
+          <div class="s-tag">Roadmap 2026</div>
+          <h1 class="s-h1">The Future Level of <span class="hi">Autonomous</span> Intelligence</h1>
+          <p class="s-sub">Quarterly breakdown of the technologies and protocol milestones that define the TurboQuant AI OS.</p>
+          <div class="cta-actions center" style="margin-top: 32px">
+            <button class="btn-primary" onclick="notify('🚀 Accessing Roadmap Portal...')">Join the Research Hub →</button>
+            <a href="/blog" class="btn-ghost" style="margin-left: 12px">Read Lab Reports</a>
+          </div>
+        </div>
+
+        <div class="grid-3" style="margin-bottom: 48px;">
+           <FeatureCard 
+              icon="🚀" title="Stateful Core" 
+              description="Phase 1: LangGraph orchestration and DePIN network version 1.0."
+              tags={["Q1 2026", "Done"]}
+           />
+           <FeatureCard 
+              icon="🧠" title="Persistent Memory" 
+              description="Phase 2 (Active): Agent Studio and v2 episodic memory beta program."
+              tags={["Q2 2026", "Active"]}
+           />
+           <FeatureCard 
+              icon="🌐" title="Industrial Edge" 
+              description="Phase 3: IoT physical integration and agent micropayment network."
+              tags={["Q3–Q4 2026", "Future"]}
+           />
+        </div>
+
+        <article class="technical-deep-dive">
+           {mainContent.map(section => (
+              <div class="content-block">
+                 {section.h2 && <h2 class="s-h2" style="font-size: 1.8rem; margin-top:40px">{section.h2}</h2>}
+                 {section.h3 && <h3 class="s-h2" style="font-size: 1.5rem; margin-top:30px">{section.h3}</h3>}
+                 {section.h4 && <h4 class="s-h2" style="font-size: 1.3rem; margin-top:25px">{section.h4}</h4>}
+                 {section.h5 && <h5 class="s-h2" style="font-size: 1.1rem; margin-top:20px">{section.h5}</h5>}
+                 <p style="font-size: 1rem; color: var(--text2); line-height: 1.8; margin-top: 15px;" set:html={section.p} />
+              </div>
+           ))}
+        </article>
+
+        <TechnicalSection tag="Development Path" title="Engineering AI Over the Next 12 Months" content={technicalSpecs} />
+
+        <FaqSection id="roadmap-faq" faqs={roadmapFaqs} />
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .s-h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+  .technical-deep-dive {
+    max-width: 900px;
+    margin: 80px auto;
+  }
+</style>

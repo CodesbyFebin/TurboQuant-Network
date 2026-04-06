@@ -1,0 +1,103 @@
+---
+interface Props {
+  title: string;
+  excerpt: string;
+  category: string;
+  date: string;
+  readTime: string;
+  imageIcon: string;
+  href: string;
+}
+
+const { title, excerpt, category, date, readTime, imageIcon, href } = Astro.props;
+---
+
+<a href={href} class="blog-card">
+  <div class="bc-img">
+    <span class="bc-icon">{imageIcon}</span>
+    <div class="bc-overlay"></div>
+  </div>
+  <div class="bc-body">
+    <div class="bc-cat">{category}</div>
+    <h3>{title}</h3>
+    <p>{excerpt}</p>
+    <div class="bc-meta">
+      <span>{date}</span>
+      <span class="dot">·</span>
+      <span>{readTime}</span>
+    </div>
+  </div>
+</a>
+
+<style>
+  .blog-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition:
+      border-color 0.25s,
+      transform 0.25s;
+    cursor: pointer;
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+  .blog-card:hover {
+    border-color: var(--border2);
+    transform: translateY(-4px);
+  }
+  .bc-img {
+    height: 170px;
+    background: linear-gradient(135deg, var(--surface), var(--panel));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.8rem;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .bc-img::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, var(--panel));
+  }
+  .bc-body {
+    padding: 18px;
+  }
+  .bc-cat {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .blog-card h3 {
+    font-family: var(--font-display);
+    font-size: 0.97rem;
+    font-weight: 700;
+    margin-bottom: 9px;
+    line-height: 1.38;
+    letter-spacing: -0.02em;
+  }
+  .blog-card p {
+    font-size: 0.83rem;
+    color: var(--text2);
+    line-height: 1.65;
+    margin-bottom: 12px;
+  }
+  .bc-meta {
+    display: flex;
+    gap: 12px;
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    align-items: center;
+  }
+  .bc-meta .dot {
+    opacity: 0.5;
+  }
+</style>

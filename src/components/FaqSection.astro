@@ -1,0 +1,125 @@
+---
+interface Props {
+  id: string;
+  faqs: { q: string; a: string }[];
+}
+
+const { id, faqs } = Astro.props;
+
+// Pre-generate Schema JSON-LD on the server
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": f.a.replace(/<[^>]*>/g, '') // Strip HTML for schema
+    }
+  }))
+};
+---
+
+<section class="section" style="background:var(--bg2)" id={id}>
+  <div class="section-inner">
+    <div class="center">
+      <div class="s-tag">Enterprise FAQ</div>
+      <h2 class="s-h2">Frequently Asked <span class="hi">Questions</span></h2>
+      <p class="s-sub">{faqs.length}+ specialized answers covering every aspect of the TurboQuant ecosystem.</p>
+    </div>
+    <div class="faq-wrap">
+      {
+        faqs.map((faq, i) => (
+          <div class="faq-item" id={`${id}-item-${i}`}>
+            <div class="faq-q" onclick={`document.getElementById('${id}-item-${i}').classList.toggle('open')`}>
+              <h3>{faq.q}</h3>
+              <div class="faq-icon" aria-hidden="true">+</div>
+            </div>
+            <div class="faq-a">
+              <div class="faq-a-inner" set:html={faq.a} />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />
+
+<style>
+  .faq-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 900px;
+    margin: 40px auto 0;
+  }
+  .faq-item {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .faq-item:hover {
+    border-color: var(--border2);
+  }
+  .faq-item.open {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px var(--glow-g);
+  }
+  .faq-q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+    cursor: pointer;
+    gap: 16px;
+  }
+  .faq-q h3 {
+    font-size: 0.93rem;
+    font-weight: 600;
+    line-height: 1.45;
+    font-family: var(--font-body);
+    color: var(--text);
+  }
+  .faq-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    transition:
+      transform 0.3s,
+      background 0.2s;
+    color: var(--muted);
+  }
+  .faq-item.open .faq-icon {
+    transform: rotate(45deg);
+    background: var(--accent);
+    color: #020408;
+    border-color: var(--accent);
+  }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .faq-item.open .faq-a {
+    max-height: 2000px; /* Large enough for long content */
+  }
+  .faq-a-inner {
+    padding: 16px 22px 20px;
+    font-size: 0.88rem;
+    color: var(--text2);
+    line-height: 1.78;
+    border-top: 1px solid var(--border);
+  }
+</style>

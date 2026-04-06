@@ -1,0 +1,90 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import FaqSection from "../components/FaqSection.astro";
+import TechnicalSection from "../components/TechnicalSection.astro";
+import Footer from "../components/Footer.astro";
+import { privacyFaqs } from "../data/faqs";
+
+const mainContent = [
+  {
+    h2: "Enterprise Ethics and Data Sovereignty 2026",
+    p: "TurboQuant is the world's most secure decentralized AI OS, built with <strong>Zero-Trust Architecture</strong>. Every mission-critical data-block is encrypted using 256-bit AES standards. Learn about our <strong>Private Storage</strong> for your <a href='/ai-agent-platform'>AI Agent Platform</a>."
+  },
+  {
+    h3: "Compliance Frameworks: SoC2, GDPR, HIPAA, and CCPA",
+    p: "We provide high-density compliance for every <a href='/ai-automation-system'>Automated Workflow</a>. All our tools, from the <a href='/ai-kanban-board'>Kanban Board</a> to our <strong>Agent Builder SDK</strong>, satisfy global data privacy laws in 2026."
+  },
+  {
+    h4: "Isolated Sandboxes and Inference Trace Security",
+    p: "User data never leaves the client's sovereign network. Inference on the <a href='/about'>DePIN Cloud</a> is performed in transient, short-lived Docker containers that are instantly wiped after every mission."
+  },
+  {
+    h5: "User Rights and the Right to be Forgotten",
+    p: "TurboQuant provides a full API suite for user data management. You have absolute control over your <strong>Episodic and Semantic memory layers</strong>. Check our <a href='/roadmap'>Roadmap for Encryption V4.0</a>."
+  }
+];
+
+const technicalSpecs = [
+  ...mainContent.map(c => ({ h3: c.h2 || c.h3 || c.h4, p: c.p }))
+];
+---
+
+<BaseLayout 
+  title="Privacy Policy & Enterprise Compliance – TurboQuant AI 2026"
+  description="Data sovereignty terms and HIPAA/GDPR compliance for the TurboQuant Network architecture."
+  canonical="https://turboquant.network/privacy-policy"
+>
+  <Navbar activePage="privacy" />
+
+  <main>
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Privacy & Compliance" }]} />
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="center" style="margin-bottom: 56px;">
+          <div class="s-tag">Legal & Trust Hub</div>
+          <h1 class="s-h1">Enterprise <span class="hi">Compliance</span> & Data Privacy Policy</h1>
+          <p class="s-sub">Detailed privacy policy for decentralized AI, prioritizing absolute data sovereignty across the OS.</p>
+          <div class="cta-actions center" style="margin-top: 32px">
+            <button class="btn-primary" onclick="notify('🔒 Accessing Compliance Portal...')">View SOC2 Audit →</button>
+            <a href="/about" class="btn-ghost" style="margin-left: 12px">Read Security Policy</a>
+          </div>
+        </div>
+
+        <article class="technical-deep-dive">
+           {mainContent.map(section => (
+              <div class="content-block">
+                 {section.h2 && <h2 class="s-h2" style="font-size: 1.8rem; margin-top:40px">{section.h2}</h2>}
+                 {section.h3 && <h3 class="s-h2" style="font-size: 1.5rem; margin-top:30px">{section.h3}</h3>}
+                 {section.h4 && <h4 class="s-h2" style="font-size: 1.3rem; margin-top:25px">{section.h4}</h4>}
+                 {section.h5 && <h5 class="s-h2" style="font-size: 1.1rem; margin-top:20px">{section.h5}</h5>}
+                 <p style="font-size: 1rem; color: var(--text2); line-height: 1.8; margin-top: 15px;" set:html={section.p} />
+              </div>
+           ))}
+        </article>
+
+        <TechnicalSection tag="Trust Architecture" title="Advanced Data Protection Framework" content={technicalSpecs} />
+
+        <FaqSection id="privacy-faq" faqs={privacyFaqs} />
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .s-h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+  .technical-deep-dive {
+    max-width: 900px;
+    margin: 80px auto;
+  }
+</style>

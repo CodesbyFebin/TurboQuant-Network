@@ -1,0 +1,106 @@
+---
+/* 
+  TurboQuant Home — v4.3
+  Multilingual & Voice-SEO Engineered
+*/
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import FaqSection from "../components/FaqSection.astro";
+import TechnicalSection from "../components/TechnicalSection.astro";
+import Footer from "../components/Footer.astro";
+import { homeFaqs } from "../data/faqs";
+import { TRANSLATIONS } from "../data/translations";
+
+const lang = Astro.url.searchParams.get('lang') || 'en';
+const t = TRANSLATIONS[lang] || TRANSLATIONS.en;
+
+const coreCapabilities = [
+  {
+    icon: "🤖",
+    title: lang === 'en' ? "Multi-Agent Orchestration" : (lang === 'hi' ? "मल्टी-एजेंट ऑर्केस्ट्रेशन" : (lang === 'es' ? "Orquestación Multi-Agente" : "Multi-Agent Orchestration")),
+    description: "Coordination of specialized Agent Fleets via stateful LangGraph graphs. From Planner to Reviewer, every task is optimized for role-specific excellence.",
+    tags: ["LangGraph", "Stateful", "Fleets"],
+    link: "/ai-agent-platform",
+    accent: "#10F584",
+    glow: "rgba(16,245,132,.08)",
+  },
+  {
+    icon: "📋",
+    title: lang === 'en' ? "Self-Driving AI Kanban" : (lang === 'hi' ? "सेल्फ-ड्राइविंग AI कानबन" : (lang === 'es' ? "Kanban de IA Autoconducido" : "Self-Driving AI Kanban")),
+    description: "The world's first project management system that prioritizes, assigns, and executes its own backlog autonomously.",
+    tags: ["Auto-Prioritize", "Autonomous"],
+    link: "/ai-kanban-board",
+    accent: "#00E5FF",
+    glow: "rgba(0,229,255,.15)",
+  },
+  {
+    icon: "⛓️",
+    title: lang === 'en' ? "DePIN AI OS Rewards" : (lang === 'hi' ? "DePIN AI OS पुरस्कार" : (lang === 'es' ? "Recompensas DePIN AI OS" : "DePIN AI OS Rewards")),
+    description: "Contribute compute and earn $EDGE. TurboQuant's Decentralized Physical Infrastructure Network routes inference to the edge for 85% cost cuts.",
+    tags: ["DePIN", "$EDGE", "Rewards"],
+    link: "/about",
+    accent: "#7C3AED",
+    glow: "rgba(124,58,237,.15)",
+  },
+];
+
+const technicalDeepDive = [
+  {
+    h3: "Vector Quantization",
+    p: "Vector quantization maps high-dimensional vectors into representative codewords, reducing retrieval overhead by 100x."
+  },
+  {
+    h3: "KV Cache Optimization",
+    p: "Tiered KV caching protocol offloads inactive heads to the edge, minimizing latency."
+  }
+];
+---
+
+<BaseLayout lang={lang}>
+  <Navbar activePage="home" lang={lang} />
+
+  <main id="main-content">
+    <Hero lang={lang} />
+
+    <section class="section" style="background:var(--bg2)" aria-labelledby="feat-h2">
+      <div class="section-inner">
+        <div class="center">
+          <div class="s-tag">{t.home.capabilities.tag}</div>
+          <h2 class="s-h2" id="feat-h2" set:html={t.home.capabilities.h2}></h2>
+          <p class="s-sub">{t.home.capabilities.sub}</p>
+        </div>
+        <div class="grid-3">
+          {coreCapabilities.map((cap) => <FeatureCard {...cap} />)}
+        </div>
+      </div>
+    </section>
+
+    <TechnicalSection tag="Engineering" title="High-Fidelity Multi-Agent Architecture" content={technicalDeepDive} />
+
+    <FaqSection id="home-faq" faqs={homeFaqs} />
+
+    <section class="s-sm">
+      <div class="section-inner">
+        <div class="cta-block">
+          <h2 set:html={t.home.cta_banner.h2}></h2>
+          <p>{t.home.cta_banner.sub}</p>
+          <div class="cta-actions">
+            <button class="btn-primary" onclick="notify('🚀 Launching TurboQuant...')">{lang === 'en' ? 'Launch App' : (lang === 'hi' ? 'ऐप लॉन्च करें' : 'Launch')}</button>
+            <a href="/blog" class="btn-ghost">{t.nav.library}</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={lang} />
+</BaseLayout>
+
+<style>
+  .cta-block { background: linear-gradient(135deg, var(--surface), var(--panel)); border: 1px solid var(--border); border-radius: 24px; padding: 64px; text-align: center; position: relative; overflow: hidden; }
+  .cta-block h2 { font-family: var(--font-display); font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 800; }
+  .cta-block p { color: var(--text2); font-size: 1.02rem; margin: 20px auto 30px; line-height: 1.7; max-width: 600px; }
+</style>

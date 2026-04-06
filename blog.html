@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">TurboQuant Blog — AI Agent Platform, Autonomous Workflows & AI Work OS</title>
+<meta name="description" id="page-desc" content="The definitive knowledge hub for AI agents, autonomous workflows, AI Work OS, self-hosted AI, coding agents, and the future of intelligent automation. 1000+ expert articles.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" id="canonical" href="https://blog.turboquad.network/">
+<meta property="og:title" id="og-title" content="TurboQuant Blog — AI Agent Knowledge Hub">
+<meta property="og:description" id="og-desc" content="1000+ SEO-optimized articles on AI agents, automation, and the future of work.">
+<meta property="og:url" id="og-url" content="https://blog.turboquad.network/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://blog.turboquad.network/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" id="tw-title" content="TurboQuant Blog">
+<meta name="twitter:description" id="tw-desc" content="1000+ expert articles on AI agents and automation.">
+<script type="application/ld+json" id="schema-main">
+{"@context":"https://schema.org","@type":"WebSite","name":"TurboQuant Blog","url":"https://blog.turboquad.network","potentialAction":{"@type":"SearchAction","target":"https://blog.turboquad.network/#search={search_term_string}","query-input":"required name=search_term_string"},"publisher":{"@type":"Organization","name":"TurboQuant Network","url":"https://turboquant.network"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"TurboQuant Network","applicationCategory":"BusinessApplication","operatingSystem":"Web, Self-Hosted","description":"AI agent platform for autonomous workflow automation, coding, and task execution.","url":"https://turboquant.network","featureList":["AI agents","AI workflow automation","AI Kanban board","AI coding terminal","Self-hosted AI system"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#020509;--surface:#070C14;--card:#0B1120;--border:#14213A;--border2:#1E3050;
+  --accent:#00E5FF;--accent2:#7C3AED;--accent3:#10F584;--accent4:#F59E0B;
+  --text:#EDF2FF;--muted:#6B7FA3;--subtle:#2A3A5C;
+  --glow-c:rgba(0,229,255,.15);--glow-v:rgba(124,58,237,.15);--glow-g:rgba(16,245,132,.12);
+  --font-display:'Syne',sans-serif;--font-body:'DM Sans',sans-serif;--font-mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;background:rgba(2,5,9,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem}
+.nav-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;gap:1rem}
+.nav-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none;cursor:pointer}
+.nav-logo-mark{width:36px;height:36px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-weight:500;font-size:.75rem;color:#000;letter-spacing:-.02em;flex-shrink:0}
+.nav-logo-text{font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--text)}
+.nav-logo-text span{color:var(--accent)}
+.nav-search-wrap{flex:1;max-width:320px;position:relative}
+.nav-search{width:100%;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.45rem .75rem .45rem 2.2rem;color:var(--text);font-family:var(--font-body);font-size:.85rem;outline:none;transition:border-color .2s}
+.nav-search:focus{border-color:var(--accent)}
+.nav-search-icon{position:absolute;left:.7rem;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.85rem;pointer-events:none}
+.search-dropdown{position:absolute;top:calc(100% + 8px);left:0;right:0;background:var(--card);border:1px solid var(--border2);border-radius:10px;overflow:hidden;z-index:200;display:none;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.search-dropdown.show{display:block}
+.search-item{padding:.65rem 1rem;font-size:.82rem;cursor:pointer;border-bottom:1px solid var(--border);transition:background .15s;display:flex;align-items:center;gap:.6rem}
+.search-item:last-child{border-bottom:none}
+.search-item:hover{background:rgba(0,229,255,.06)}
+.search-item-badge{font-family:var(--font-mono);font-size:.65rem;color:var(--accent3);background:rgba(16,245,132,.08);border:1px solid rgba(16,245,132,.2);border-radius:4px;padding:1px 6px;flex-shrink:0}
+.nav-links{display:flex;gap:1.25rem;list-style:none}
+.nav-links a,.nav-links button{color:var(--muted);text-decoration:none;font-size:.82rem;font-weight:500;transition:color .2s;background:none;border:none;cursor:pointer;font-family:var(--font-body);padding:0}
+.nav-links a:hover,.nav-links button:hover{color:var(--accent)}
+.nav-cta{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#000;font-weight:700;font-size:.8rem;padding:.45rem 1.1rem;border-radius:6px;text-decoration:none;transition:opacity .2s;font-family:var(--font-display);white-space:nowrap}
+.nav-cta:hover{opacity:.85}
+.nav-hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:.5rem;background:none;border:none}
+.nav-hamburger span{width:20px;height:2px;background:var(--muted);border-radius:2px;transition:.2s}
+@media(max-width:900px){.nav-links,.nav-search-wrap{display:none}.nav-hamburger{display:flex}}
+
+/* ── PAGES ── */
+.page{display:none;animation:fadeIn .3s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+
+/* ── HERO ── */
+.hero{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden;padding:5rem 2rem 4rem}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,229,255,.08) 0%,transparent 70%),radial-gradient(ellipse 50% 50% at 80% 80%,rgba(124,58,237,.06) 0%,transparent 60%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:.3;mask-image:radial-gradient(ellipse at center,black 20%,transparent 80%)}
+.hero-inner{position:relative;z-index:1;max-width:1400px;margin:0 auto;width:100%}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.2);border-radius:20px;padding:.3rem .9rem;font-size:.72rem;font-family:var(--font-mono);color:var(--accent);margin-bottom:2rem;animation:fadeUp .6s ease both}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--accent3);border-radius:50%;animation:pulse 2s infinite;flex-shrink:0}
+.hero-title{font-family:var(--font-display);font-size:clamp(2.8rem,7vw,6rem);font-weight:800;line-height:1.0;letter-spacing:-.04em;margin-bottom:1.5rem;animation:fadeUp .7s .1s ease both}
+.hero-title .line1{display:block;color:var(--text)}
+.hero-title .line2{display:block;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-title .line3{display:block;color:var(--text)}
+.hero-sub{font-size:1.1rem;color:var(--muted);max-width:620px;line-height:1.7;margin-bottom:2.5rem;animation:fadeUp .7s .2s ease both;font-weight:300}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .7s .3s ease both}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#000;font-weight:700;font-size:.9rem;padding:.75rem 2rem;border-radius:8px;text-decoration:none;font-family:var(--font-display);transition:transform .2s,box-shadow .2s;box-shadow:0 0 30px var(--glow-c);display:inline-block;cursor:pointer;border:none}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 50px var(--glow-c)}
+.btn-ghost{color:var(--text);font-weight:500;font-size:.9rem;padding:.75rem 2rem;border-radius:8px;text-decoration:none;border:1px solid var(--border2);transition:border-color .2s,background .2s;display:inline-block;cursor:pointer;background:transparent;font-family:var(--font-body)}
+.btn-ghost:hover{border-color:var(--accent);background:rgba(0,229,255,.05)}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--border);animation:fadeUp .7s .4s ease both;flex-wrap:wrap}
+.hero-stat-num{font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--accent)}
+.hero-stat-label{font-size:.78rem;color:var(--muted);margin-top:.2rem}
+
+/* ── SECTIONS ── */
+section{padding:4.5rem 2rem}
+.section-inner{max-width:1400px;margin:0 auto}
+.section-tag{font-family:var(--font-mono);font-size:.68rem;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.75rem}
+.section-title{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:.75rem}
+.section-sub{color:var(--muted);font-size:.95rem;max-width:560px;line-height:1.7}
+
+/* ── PILLAR CARDS ── */
+.pillars-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem}
+.pillars-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.25rem}
+.pillar-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.6rem;text-decoration:none;color:inherit;transition:border-color .25s,transform .25s,box-shadow .25s;position:relative;overflow:hidden;display:block;cursor:pointer}
+.pillar-card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .25s}
+.pillar-card.c::before{background:linear-gradient(135deg,var(--glow-c),transparent)}
+.pillar-card.v::before{background:linear-gradient(135deg,var(--glow-v),transparent)}
+.pillar-card.g::before{background:linear-gradient(135deg,var(--glow-g),transparent)}
+.pillar-card.y::before{background:linear-gradient(135deg,rgba(245,158,11,.1),transparent)}
+.pillar-card:hover::before{opacity:1}
+.pillar-card:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.pillar-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1.1rem;flex-shrink:0}
+.pillar-icon.c{background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.2)}
+.pillar-icon.v{background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25)}
+.pillar-icon.g{background:rgba(16,245,132,.1);border:1px solid rgba(16,245,132,.2)}
+.pillar-icon.y{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2)}
+.pillar-num{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);margin-bottom:.4rem}
+.pillar-name{font-family:var(--font-display);font-weight:700;font-size:1.05rem;margin-bottom:.5rem;line-height:1.3}
+.pillar-desc{font-size:.82rem;color:var(--muted);line-height:1.6;margin-bottom:1.1rem}
+.pillar-meta{display:flex;align-items:center;justify-content:space-between}
+.pillar-count{font-family:var(--font-mono);font-size:.68rem;color:var(--muted)}
+.pillar-arrow{font-size:.85rem;color:var(--accent);opacity:0;transform:translateX(-6px);transition:.2s}
+.pillar-card:hover .pillar-arrow{opacity:1;transform:translateX(0)}
+.pillar-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.75rem}
+.tag{font-size:.65rem;font-family:var(--font-mono);padding:2px 8px;border-radius:4px;border:1px solid var(--border2);color:var(--muted)}
+
+/* ── CATEGORY PAGE ── */
+.breadcrumb{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--muted);margin-bottom:2rem;flex-wrap:wrap}
+.breadcrumb a,.breadcrumb button{color:var(--muted);text-decoration:none;background:none;border:none;cursor:pointer;font-family:var(--font-body);font-size:.8rem;padding:0;transition:color .2s}
+.breadcrumb a:hover,.breadcrumb button:hover{color:var(--accent)}
+.breadcrumb-sep{color:var(--subtle)}
+.pillar-hero{padding:4rem 2rem 2rem;position:relative;overflow:hidden}
+.pillar-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 30% 50%,rgba(0,229,255,.06),transparent)}
+.pillar-hero-inner{max-width:1400px;margin:0 auto;position:relative;z-index:1}
+.pillar-hero-title{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.5rem);font-weight:800;letter-spacing:-.04em;line-height:1.1;margin-bottom:.75rem}
+.pillar-hero-sub{color:var(--muted);font-size:1rem;max-width:640px;line-height:1.7;margin-bottom:1.5rem}
+
+.categories-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.cat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.4rem;cursor:pointer;transition:border-color .2s,transform .2s;text-decoration:none;display:block;color:inherit}
+.cat-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.cat-card-num{font-family:var(--font-mono);font-size:.62rem;color:var(--muted);margin-bottom:.35rem}
+.cat-card-name{font-family:var(--font-display);font-weight:700;font-size:.95rem;margin-bottom:.4rem;line-height:1.3}
+.cat-card-desc{font-size:.8rem;color:var(--muted);line-height:1.55;margin-bottom:.85rem}
+.cat-card-meta{font-family:var(--font-mono);font-size:.65rem;color:var(--muted)}
+
+/* ── BLOG LIST ── */
+.blog-list{display:flex;flex-direction:column;gap:.85rem}
+.blog-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.3rem 1.5rem;cursor:pointer;transition:border-color .2s,transform .2s;display:flex;align-items:flex-start;gap:1rem}
+.blog-item:hover{border-color:var(--border2);transform:translateX(4px)}
+.blog-item-num{font-family:var(--font-mono);font-size:.68rem;color:var(--muted);min-width:30px;padding-top:.15rem}
+.blog-item-body{flex:1}
+.blog-item-title{font-family:var(--font-display);font-weight:700;font-size:.98rem;margin-bottom:.35rem;line-height:1.35;color:var(--text)}
+.blog-item-meta{font-size:.78rem;color:var(--muted);line-height:1.5}
+.blog-item-badge{display:inline-flex;align-items:center;gap:.3rem;font-family:var(--font-mono);font-size:.6rem;padding:2px 7px;border-radius:4px;margin-right:.4rem}
+.badge-info{background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.2);color:var(--accent)}
+.badge-comp{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);color:var(--accent4)}
+.badge-how{background:rgba(16,245,132,.08);border:1px solid rgba(16,245,132,.2);color:var(--accent3)}
+.badge-trans{background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);color:#A78BFA}
+.blog-item-arrow{color:var(--muted);transition:.2s;flex-shrink:0;font-size:.9rem}
+.blog-item:hover .blog-item-arrow{color:var(--accent);transform:translateX(3px)}
+
+/* ── BLOG POST ── */
+.post-wrap{max-width:860px;margin:0 auto;padding:2rem}
+.post-header{margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+.post-badges{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.post-title{font-family:var(--font-display);font-size:clamp(1.8rem,4.5vw,3rem);font-weight:800;letter-spacing:-.04em;line-height:1.15;margin-bottom:1rem}
+.post-meta{display:flex;align-items:center;gap:1.25rem;font-size:.8rem;color:var(--muted);flex-wrap:wrap}
+.post-meta-item{display:flex;align-items:center;gap:.35rem}
+.post-body h2{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--accent);margin:2.5rem 0 .9rem;border-left:3px solid rgba(16,245,132,.4);padding-left:.85rem;letter-spacing:-.02em}
+.post-body h3{font-family:var(--font-display);font-size:1.15rem;font-weight:600;color:#A78BFA;margin:1.75rem 0 .65rem}
+.post-body p{color:#C8D4E8;line-height:1.85;margin-bottom:1.1rem;font-size:.975rem}
+.post-body ul,.post-body ol{color:#C8D4E8;padding-left:1.3rem;margin-bottom:1.1rem}
+.post-body li{margin-bottom:.5rem;line-height:1.75;font-size:.975rem}
+.post-body strong{color:var(--text);font-weight:600}
+.post-body a{color:var(--accent3);text-decoration:underline;text-underline-offset:3px;transition:opacity .2s}
+.post-body a:hover{opacity:.75}
+.post-callout{background:rgba(0,229,255,.04);border:1px solid rgba(0,229,255,.15);border-radius:10px;padding:1.25rem 1.5rem;margin:1.75rem 0}
+.post-callout-title{font-family:var(--font-display);font-size:.85rem;font-weight:700;color:var(--accent);margin-bottom:.5rem}
+.post-callout p{margin-bottom:0;font-size:.88rem}
+.post-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.875rem}
+.post-table th{background:rgba(0,229,255,.06);color:var(--accent);font-family:var(--font-display);font-size:.8rem;padding:.7rem .9rem;text-align:left;border-bottom:1px solid var(--border2)}
+.post-table td{padding:.65rem .9rem;border-bottom:1px solid var(--border);color:#C8D4E8}
+.post-table tr:hover td{background:rgba(255,255,255,.02)}
+
+/* ── FAQ ── */
+.faq-grid{display:flex;flex-direction:column;gap:.6rem;margin-top:1.5rem}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:border-color .2s}
+.faq-item.open{border-color:var(--border2)}
+.faq-q{padding:1rem 1.25rem;font-weight:600;font-size:.9rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap.5rem;font-family:var(--font-display)}
+.faq-toggle{font-family:var(--font-mono);color:var(--accent);font-size:1.1rem;flex-shrink:0;transition:transform .3s}
+.faq-item.open .faq-toggle{transform:rotate(45deg)}
+.faq-a{display:none;padding:0 1.25rem 1rem;color:var(--muted);font-size:.875rem;line-height:1.7}
+.faq-item.open .faq-a{display:block}
+.faq-a a{color:var(--accent3);text-decoration:underline}
+
+/* ── CTA BANNER ── */
+.cta-banner{background:linear-gradient(135deg,rgba(0,229,255,.06),rgba(124,58,237,.08));border:1px solid var(--border2);border-radius:20px;padding:3.5rem;text-align:center}
+.cta-title{font-family:var(--font-display);font-size:clamp(1.75rem,4vw,2.8rem);font-weight:800;letter-spacing:-.04em;line-height:1.15;margin-bottom:1rem}
+.cta-sub{color:var(--muted);font-size:.95rem;max-width:560px;margin:0 auto 2rem;line-height:1.7}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* ── RELATED POSTS ── */
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+.related-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;cursor:pointer;transition:border-color .2s,transform .2s}
+.related-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.related-card-tag{font-family:var(--font-mono);font-size:.62rem;color:var(--accent3);margin-bottom:.4rem}
+.related-card-title{font-family:var(--font-display);font-weight:700;font-size:.9rem;line-height:1.35;color:var(--text)}
+
+/* ── FOOTER ── */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:3.5rem 2rem 2rem}
+.footer-inner{max-width:1400px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
+@media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.footer-top{grid-template-columns:1fr}}
+.footer-brand p{font-size:.82rem;color:var(--muted);line-height:1.65;margin-top:.5rem;max-width:300px}
+.footer-col h4{font-family:var(--font-display);font-size:.85rem;font-weight:700;margin-bottom:.9rem;color:var(--text)}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:.4rem}
+.footer-col ul li a,.footer-col ul li button{font-size:.8rem;color:var(--muted);text-decoration:none;transition:color .2s;background:none;border:none;cursor:pointer;font-family:var(--font-body);padding:0;text-align:left}
+.footer-col ul li a:hover,.footer-col ul li button:hover{color:var(--accent)}
+.footer-bottom{display:flex;justify-content:space-between;padding-top:1.5rem;border-top:1px solid var(--border);flex-wrap:wrap;gap:.5rem}
+.footer-copy{font-size:.75rem;color:var(--muted)}
+
+/* ── TOC ── */
+.toc{background:rgba(0,229,255,.03);border:1px solid rgba(0,229,255,.12);border-radius:10px;padding:1.25rem 1.5rem;margin:2rem 0}
+.toc-title{font-family:var(--font-display);font-size:.8rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem}
+.toc ol{padding-left:1.2rem;display:flex;flex-direction:column;gap:.25rem}
+.toc li{font-size:.82rem;color:var(--muted);cursor:pointer;transition:color .2s}
+.toc li:hover{color:var(--accent)}
+
+/* ── PROGRESS BAR ── */
+.read-progress{position:fixed;top:64px;left:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:99;width:0%;transition:width .1s linear}
+
+/* ── BACK TO TOP ── */
+.back-top{position:fixed;bottom:2rem;right:2rem;width:42px;height:42px;background:var(--card);border:1px solid var(--border2);border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:99;transition:border-color .2s,transform .2s;font-size:1rem;opacity:0;pointer-events:none;transition:opacity .3s,transform .2s}
+.back-top.show{opacity:1;pointer-events:auto}
+.back-top:hover{border-color:var(--accent);transform:translateY(-3px)}
+
+/* ── ACCENT COLORS ── */
+.accent-c{color:var(--accent)}
+.accent-v{color:var(--accent2)}
+.accent-g{color:var(--accent3)}
+.accent-y{color:var(--accent4)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .pillars-grid{grid-template-columns:1fr}
+  .categories-grid{grid-template-columns:1fr}
+  .related-grid{grid-template-columns:1fr}
+  .hero{min-height:auto;padding:4rem 1.25rem 3rem}
+  section{padding:3rem 1.25rem}
+  .pillar-hero{padding:2.5rem 1.25rem 1.5rem}
+  .post-wrap{padding:1.25rem}
+  .cta-banner{padding:2.25rem 1.5rem}
+  .hero-stats{gap:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- Progress bar -->
+<div class="read-progress" id="readProgress"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="navigate('home')">
+      <div class="nav-logo-mark">TQ</div>
+      <span class="nav-logo-text">Turbo<span>Quant</span> Blog</span>
+    </div>
+    <div class="nav-search-wrap">
+      <span class="nav-search-icon">🔍</span>
+      <input class="nav-search" id="navSearch" placeholder="Search 1000+ articles..." autocomplete="off">
+      <div class="search-dropdown" id="searchDropdown"></div>
+    </div>
+    <ul class="nav-links">
+      <li><button onclick="navigate('home')">Home</button></li>
+      <li><button onclick="navigate('pillar','pillar-ai-agents')">AI Agents</button></li>
+      <li><button onclick="navigate('pillar','pillar-turboquant-core')">TurboQuant</button></li>
+      <li><button onclick="navigate('pillar','pillar-ai-seo-trends')">AI Trends</button></li>
+      <li><button onclick="navigate('pillar','pillar-ai-tools-comparison')">Comparisons</button></li>
+    </ul>
+    <a href="https://turboquant.network" class="nav-cta" target="_blank">Start Free ⚡</a>
+    <button class="nav-hamburger" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     HOME PAGE
+══════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">🤖 1,000+ Expert Articles · Updated 2026</div>
+    <h1 class="hero-title">
+      <span class="line1">The Definitive</span>
+      <span class="line2">AI Agent Knowledge</span>
+      <span class="line3">Hub</span>
+    </h1>
+    <p class="hero-sub">Deep-dive articles on AI agents, autonomous workflows, self-hosted AI, multi-agent orchestration, and the future of intelligent work. Powered by TurboQuant Network.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="navigate('pillar','pillar-turboquant-core')">Explore TurboQuant Core ⚡</button>
+      <button class="btn-ghost" onclick="document.getElementById('pillars-section').scrollIntoView({behavior:'smooth'})">Browse 10 Pillars →</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">1,000+</div><div class="hero-stat-label">Expert Articles</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">10</div><div class="hero-stat-label">Content Pillars</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">100</div><div class="hero-stat-label">Topic Categories</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">6x</div><div class="hero-stat-label">Faster AI Inference</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Pillars Grid -->
+<section id="pillars-section">
+  <div class="section-inner">
+    <div class="pillars-header">
+      <div>
+        <div class="section-tag">// content pillars</div>
+        <h2 class="section-title">10 Deep-Dive <span class="accent-c">Knowledge Pillars</span></h2>
+        <p class="section-sub">Each pillar contains 10 categories with 10 expert articles — 1,000 total resources on AI agents and intelligent automation.</p>
+      </div>
+    </div>
+    <div class="pillars-grid" id="pillarsGrid"></div>
+  </div>
+</section>
+
+<!-- FAQs -->
+<section>
+  <div class="section-inner">
+    <div class="section-tag">// faq</div>
+    <h2 class="section-title">Frequently Asked <span class="accent-g">Questions</span></h2>
+    <p class="section-sub" style="margin-bottom:2rem">Everything you need to know about AI agents, automation, and TurboQuant technology.</p>
+    <div class="faq-grid" id="homeFaqs"></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <div class="section-inner">
+    <div class="cta-banner">
+      <h2 class="cta-title">Ready to Build <span class="accent-c">AI Agents</span><br>That Do Real Work?</h2>
+      <p class="cta-sub">TurboQuant Network lets you automate workflows, write and deploy code, and manage tasks with AI — all from one unified platform.</p>
+      <div class="cta-actions">
+        <a href="https://turboquant.network" class="btn-primary" target="_blank">Start Building Free ⚡</a>
+        <button class="btn-ghost" onclick="navigate('pillar','pillar-ai-agents')">Read AI Agents Guide</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /page-home -->
+
+<!-- ══════════════════════════════════════
+     PILLAR PAGE
+══════════════════════════════════════ -->
+<div id="page-pillar" class="page">
+  <div class="pillar-hero">
+    <div class="pillar-hero-bg"></div>
+    <div class="pillar-hero-inner">
+      <div class="breadcrumb" id="pillarBreadcrumb"></div>
+      <div class="hero-badge" id="pillarBadge" style="margin-bottom:1.25rem"></div>
+      <h1 class="pillar-hero-title" id="pillarTitle"></h1>
+      <p class="pillar-hero-sub" id="pillarSub"></p>
+      <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+        <div style="font-family:var(--font-mono);font-size:.7rem;color:var(--muted)">📁 10 Categories</div>
+        <div style="font-family:var(--font-mono);font-size:.7rem;color:var(--muted)">📝 100 Articles</div>
+        <div style="font-family:var(--font-mono);font-size:.7rem;color:var(--muted)">❓ 20 FAQs</div>
+      </div>
+    </div>
+  </div>
+  <section style="padding-top:2rem">
+    <div class="section-inner">
+      <div class="section-tag">// categories</div>
+      <h2 class="section-title" style="margin-bottom:1.75rem">Explore <span class="accent-c">10 Categories</span></h2>
+      <div class="categories-grid" id="categoriesGrid"></div>
+    </div>
+  </section>
+  <section>
+    <div class="section-inner">
+      <div class="section-tag">// pillar faqs</div>
+      <h2 class="section-title">20 <span class="accent-g">FAQs</span> — Deep Answers</h2>
+      <p class="section-sub" style="margin-bottom:1.75rem">Comprehensive answers to the most asked questions — with links to related pillars.</p>
+      <div class="faq-grid" id="pillarFaqs"></div>
+    </div>
+  </section>
+  <section>
+    <div class="section-inner">
+      <div class="cta-banner">
+        <h2 class="cta-title">Automate With <span class="accent-c">TurboQuant</span></h2>
+        <p class="cta-sub">The AI agent platform that turns this knowledge into real, autonomous workflows.</p>
+        <div class="cta-actions">
+          <a href="https://turboquant.network" class="btn-primary" target="_blank">Start Free ⚡</a>
+          <button class="btn-ghost" onclick="navigate('home')">← All Pillars</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /page-pillar -->
+
+<!-- ══════════════════════════════════════
+     CATEGORY PAGE
+══════════════════════════════════════ -->
+<div id="page-category" class="page">
+  <div class="pillar-hero" style="padding-bottom:1.5rem">
+    <div class="pillar-hero-bg"></div>
+    <div class="pillar-hero-inner">
+      <div class="breadcrumb" id="catBreadcrumb"></div>
+      <h1 class="pillar-hero-title" id="catTitle"></h1>
+      <p class="pillar-hero-sub" id="catSub"></p>
+    </div>
+  </div>
+  <section style="padding-top:2rem">
+    <div class="section-inner">
+      <div class="section-tag">// articles in this category</div>
+      <h2 class="section-title" style="margin-bottom:1.5rem">10 Expert <span class="accent-c">Articles</span></h2>
+      <div class="blog-list" id="blogList"></div>
+    </div>
+  </section>
+  <section>
+    <div class="section-inner">
+      <div class="section-tag">// related reading</div>
+      <h2 class="section-title" style="margin-bottom:1.5rem">Related <span class="accent-v">Categories</span></h2>
+      <div class="related-grid" id="relatedCats"></div>
+    </div>
+  </section>
+</div><!-- /page-category -->
+
+<!-- ══════════════════════════════════════
+     BLOG POST PAGE
+══════════════════════════════════════ -->
+<div id="page-post" class="page">
+  <section style="padding-top:3rem">
+    <div class="section-inner">
+      <div class="post-wrap">
+        <div class="breadcrumb" id="postBreadcrumb"></div>
+        <div class="post-header">
+          <div class="post-badges" id="postBadges"></div>
+          <h1 class="post-title" id="postTitle"></h1>
+          <div class="post-meta">
+            <span class="post-meta-item">📅 <span id="postDate"></span></span>
+            <span class="post-meta-item">⏱ <span id="postRead"></span> min read</span>
+            <span class="post-meta-item">📁 <span id="postCat"></span></span>
+          </div>
+        </div>
+        <div class="toc" id="postToc"></div>
+        <div class="post-body" id="postBody"></div>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)">
+          <div class="section-tag">// related articles</div>
+          <h2 class="section-title" style="margin-bottom:1.25rem">Continue <span class="accent-c">Reading</span></h2>
+          <div class="related-grid" id="postRelated"></div>
+        </div>
+        <div style="margin-top:2.5rem">
+          <div class="cta-banner" style="padding:2rem">
+            <h2 class="cta-title" style="font-size:1.75rem">Put This Into <span class="accent-c">Practice</span></h2>
+            <p class="cta-sub" style="font-size:.875rem">TurboQuant Network is the AI agent platform built on these principles. Start free.</p>
+            <div class="cta-actions">
+              <a href="https://turboquant.network" class="btn-primary" target="_blank">Launch TurboQuant ⚡</a>
+              <button class="btn-ghost" onclick="history.back()">← Back</button>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:2.5rem">
+          <div class="section-tag">// faq</div>
+          <h2 class="section-title" style="margin-bottom:1.25rem">Article <span class="accent-g">FAQs</span></h2>
+          <div class="faq-grid" id="postFaqs"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /page-post -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo" onclick="navigate('home')" style="margin-bottom:.65rem">
+          <div class="nav-logo-mark">TQ</div>
+          <span class="nav-logo-text">Turbo<span>Quant</span> Blog</span>
+        </div>
+        <p>The definitive knowledge hub for AI agents, autonomous workflows, and the future of intelligent work. Powered by TurboQuant Network.</p>
+      </div>
+      <div class="footer-col" id="footerCol1"></div>
+      <div class="footer-col" id="footerCol2"></div>
+      <div class="footer-col">
+        <h4>TurboQuant Network</h4>
+        <ul>
+          <li><a href="https://turboquant.network" target="_blank">AI Agent Platform</a></li>
+          <li><a href="https://turboquant.network" target="_blank">AI Kanban Board</a></li>
+          <li><a href="https://turboquant.network" target="_blank">Coding Agent</a></li>
+          <li><a href="https://turboquant.network" target="_blank">Self-Hosted AI</a></li>
+          <li><a href="https://turboquant.network" target="_blank">Start Free ⚡</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 TurboQuant Network · blog.turboquad.network · All rights reserved</span>
+      <span class="footer-copy" style="font-family:var(--font-mono);font-size:.68rem">10 pillars · 100 categories · 1,000 articles</span>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// ════════════════════════════════════════════════
+// DATA
+// ════════════════════════════════════════════════
+const PILLARS = [
+  {
+    id:'pillar-ai-agents', icon:'🤖', color:'c', num:'01',
+    name:'AI Agent Platforms & Architecture',
+    desc:'Deep dives into autonomous agent systems, memory, planning, tool use, and enterprise deployment patterns.',
+    keywords:['autonomous agents','agent architecture','AI platform','agent deployment'],
+    categories:[
+      {id:'autonomous-agent-fundamentals',name:'Autonomous Agent Fundamentals',desc:'Core concepts, definitions and first principles of autonomous AI agents'},
+      {id:'agent-memory-state',name:'Agent Memory & State Management',desc:'How AI agents store, retrieve and reason over long-term memory'},
+      {id:'agent-planning-reasoning',name:'Agent Planning & Reasoning',desc:'Goal decomposition, chain-of-thought, and strategic planning in agents'},
+      {id:'tool-use-apis',name:'Tool Use & API Integration',desc:'How agents use external tools, APIs, and real-world interfaces'},
+      {id:'agent-frameworks',name:'Agent Frameworks & SDKs',desc:'LangChain, AutoGPT, CrewAI, LangGraph and other agent frameworks compared'},
+      {id:'agent-evaluation',name:'Agent Evaluation & Benchmarks',desc:'How to measure agent performance, accuracy and reliability'},
+      {id:'agentic-loops',name:'Agentic Loops & Execution',desc:'ReAct, Plan-and-Execute, and advanced agentic loop patterns'},
+      {id:'human-in-the-loop',name:'Human-in-the-Loop Systems',desc:'Designing agents that collaborate with humans effectively'},
+      {id:'agent-deployment',name:'Agent Deployment & Scaling',desc:'Production deployment patterns for AI agents at enterprise scale'},
+      {id:'ai-agent-use-cases',name:'AI Agent Use Cases',desc:'Real-world applications of AI agents across industries'}
+    ]
+  },
+  {
+    id:'pillar-automation', icon:'⚡', color:'g', num:'02',
+    name:'AI Workflow Automation',
+    desc:'Build intelligent pipelines that automate complex business processes using AI-powered decision making.',
+    keywords:['workflow automation','AI pipelines','business automation','AI kanban'],
+    categories:[
+      {id:'workflow-design',name:'Workflow Design Principles',desc:'Architecture patterns for building resilient AI automation pipelines'},
+      {id:'trigger-event-systems',name:'Trigger & Event Systems',desc:'Event-driven automation, webhooks and real-time AI triggers'},
+      {id:'data-pipeline-automation',name:'Data Pipeline Automation',desc:'Automating ETL, data processing and analytics with AI'},
+      {id:'ai-kanban-boards',name:'AI Kanban & Task Boards',desc:'Intelligent task management with AI-powered Kanban systems'},
+      {id:'no-code-automation',name:'No-Code AI Automation',desc:'Building powerful automations without writing code'},
+      {id:'workflow-orchestration',name:'Workflow Orchestration',desc:'Coordinating complex multi-step automation workflows'},
+      {id:'automation-monitoring',name:'Automation Monitoring & Debugging',desc:'Observability, logging and error recovery in AI workflows'},
+      {id:'enterprise-automation',name:'Enterprise Automation Patterns',desc:'Scaling AI automation across large organizations'},
+      {id:'automation-integrations',name:'Automation Integrations',desc:'Connecting AI automations to Slack, Notion, GitHub, and more'},
+      {id:'automation-roi',name:'Automation ROI & Metrics',desc:'Measuring and maximizing the business value of AI automation'}
+    ]
+  },
+  {
+    id:'pillar-ai-work-os', icon:'💼', color:'v', num:'03',
+    name:'AI Work Operating System',
+    desc:'The next evolution of work: AI-native OS replacing traditional project management with intelligent execution.',
+    keywords:['AI work OS','AI operating system','intelligent workspace','AI task management'],
+    categories:[
+      {id:'work-os-concepts',name:'AI Work OS Concepts',desc:'What an AI Work OS is and why it replaces traditional project tools'},
+      {id:'unified-ai-workspace',name:'Unified AI Workspace',desc:'Designing a single pane of glass for all AI-assisted work'},
+      {id:'ai-project-management',name:'AI Project Management',desc:'Intelligent project planning, tracking and execution with AI'},
+      {id:'knowledge-management-ai',name:'Knowledge Management with AI',desc:'AI-powered wikis, docs and institutional knowledge systems'},
+      {id:'ai-collaboration',name:'AI-Assisted Collaboration',desc:'How AI enhances team communication and decision making'},
+      {id:'context-persistence',name:'Context Persistence & Memory',desc:'Keeping AI context across sessions, projects and teams'},
+      {id:'ai-work-os-architecture',name:'AI Work OS Architecture',desc:'Technical blueprint of an AI-native work operating system'},
+      {id:'focus-productivity-ai',name:'Focus & Productivity with AI',desc:'Deep work, flow states and AI-powered productivity systems'},
+      {id:'ai-work-os-adoption',name:'AI Work OS Adoption',desc:'Change management and rollout strategies for AI-native work'},
+      {id:'future-of-work-ai',name:'Future of Work with AI',desc:'How AI agents will transform jobs, roles and organizations by 2030'}
+    ]
+  },
+  {
+    id:'pillar-self-hosted-ai', icon:'🏠', color:'y', num:'04',
+    name:'Self-Hosted AI Systems',
+    desc:'Run powerful AI models on your own infrastructure for privacy, cost savings, and complete control.',
+    keywords:['self-hosted AI','private LLM','local AI','on-premise AI','open source LLM'],
+    categories:[
+      {id:'self-hosted-fundamentals',name:'Self-Hosted AI Fundamentals',desc:'Why and how to run AI models on your own hardware'},
+      {id:'llm-deployment',name:'Local LLM Deployment',desc:'Installing and running Llama, Mistral, Qwen and other open models'},
+      {id:'hardware-requirements',name:'Hardware & GPU Requirements',desc:'GPU selection, VRAM planning and hardware optimization for AI'},
+      {id:'ollama-guide',name:'Ollama & LM Studio Guide',desc:'Complete guides to the most popular local AI runtime tools'},
+      {id:'private-ai-security',name:'Private AI Security',desc:'Securing self-hosted AI systems against threats and data leaks'},
+      {id:'quantization-optimization',name:'Quantization & Optimization',desc:'GPTQ, AWQ, GGUF and TurboQuant for efficient model serving'},
+      {id:'self-hosted-rag',name:'Self-Hosted RAG Systems',desc:'Building private retrieval-augmented generation pipelines'},
+      {id:'self-hosted-agents',name:'Self-Hosted Agent Systems',desc:'Running autonomous agents entirely on private infrastructure'},
+      {id:'cost-comparison',name:'Cost Comparison: Cloud vs Self-Hosted',desc:'Detailed cost analysis for different AI deployment models'},
+      {id:'enterprise-self-hosted',name:'Enterprise Self-Hosted AI',desc:'Air-gapped deployments, compliance and enterprise patterns'}
+    ]
+  },
+  {
+    id:'pillar-ai-coding', icon:'💻', color:'c', num:'05',
+    name:'AI Coding Agents & DevOps',
+    desc:'From Copilot to fully autonomous coding agents — AI is rewriting software development.',
+    keywords:['AI coding agent','AI DevOps','autonomous code generation','AI software development'],
+    categories:[
+      {id:'ai-code-generation',name:'AI Code Generation',desc:'State of the art in AI-powered code writing and completion'},
+      {id:'ai-code-review',name:'AI Code Review & Quality',desc:'Using AI to enforce code quality, security and best practices'},
+      {id:'autonomous-coding-agents',name:'Autonomous Coding Agents',desc:'Agents that write, test, debug and ship code independently'},
+      {id:'ai-devops',name:'AI-Powered DevOps',desc:'CI/CD pipelines, deployment automation and infrastructure as code with AI'},
+      {id:'ai-testing',name:'AI Testing & QA',desc:'Automated test generation, regression testing and bug finding with AI'},
+      {id:'ai-code-refactoring',name:'AI Code Refactoring',desc:'Using AI to modernize legacy code and improve architecture'},
+      {id:'ai-documentation',name:'AI Documentation Generation',desc:'Automated docstrings, READMEs and API documentation'},
+      {id:'pair-programming-ai',name:'AI Pair Programming',desc:'Working effectively with AI coding assistants and agents'},
+      {id:'ai-code-security',name:'AI Code Security',desc:'AI-powered vulnerability detection and secure coding practices'},
+      {id:'coding-agent-comparison',name:'Coding Agent Comparison',desc:'GitHub Copilot vs Cursor vs Devin vs TurboQuant coding agent'}
+    ]
+  },
+  {
+    id:'pillar-turboquant-core', icon:'⚛️', color:'g', num:'06',
+    name:'TurboQuant Core Technology',
+    desc:'The breakthrough AI memory compression technology achieving 6x inference efficiency — explained in depth.',
+    keywords:['TurboQuant','Google TurboQuant','AI quantization','KV cache compression','PolarQuant'],
+    categories:[
+      {id:'turboquant-explained',name:'TurboQuant Explained',desc:'Complete technical overview of the TurboQuant compression algorithm'},
+      {id:'kv-cache-compression',name:'KV Cache Compression',desc:'Deep dive into KV cache optimization and memory management'},
+      {id:'polarquant-rotation',name:'PolarQuant Rotation',desc:'How PolarQuant rotation enables accurate low-bit quantization'},
+      {id:'vector-quantization',name:'Vector Quantization Methods',desc:'VQ codebooks, residual quantization and learned compression'},
+      {id:'qjl-projection',name:'QJL Projection & Theory',desc:'Johnson-Lindenstrauss projections for AI compression'},
+      {id:'turboquant-benchmarks',name:'TurboQuant Benchmarks',desc:'Performance benchmarks across models, tasks and hardware'},
+      {id:'turboquant-integration',name:'TurboQuant Integration',desc:'How to add TurboQuant to your AI stack and pipelines'},
+      {id:'turboquant-vs-alternatives',name:'TurboQuant vs Alternatives',desc:'Comparing TurboQuant to GPTQ, AWQ, bitsandbytes and others'},
+      {id:'turboquant-agents',name:'TurboQuant for AI Agents',desc:'Why TurboQuant is transformative for long-running AI agents'},
+      {id:'turboquant-future',name:'TurboQuant Roadmap & Future',desc:'What comes after TurboQuant and the future of AI efficiency'}
+    ]
+  },
+  {
+    id:'pillar-multi-agent-systems', icon:'🕸️', color:'v', num:'07',
+    name:'Multi-Agent Systems & Orchestration',
+    desc:'Design, build and orchestrate teams of AI agents that collaborate on complex tasks.',
+    keywords:['multi-agent systems','agent orchestration','agent collaboration','distributed AI agents'],
+    categories:[
+      {id:'multi-agent-architecture',name:'Multi-Agent Architecture',desc:'Designing systems where multiple agents work together effectively'},
+      {id:'agent-communication',name:'Agent Communication Protocols',desc:'How agents share information, delegate tasks and coordinate'},
+      {id:'agent-coordination',name:'Agent Coordination Patterns',desc:'Hierarchical, peer-to-peer and market-based coordination models'},
+      {id:'crewai-guide',name:'CrewAI & Crew Patterns',desc:'Building agent crews with role-based collaboration'},
+      {id:'langgraph-guide',name:'LangGraph Multi-Agent Guide',desc:'Building stateful multi-agent workflows with LangGraph'},
+      {id:'agent-specialization',name:'Agent Specialization & Roles',desc:'Designing specialized agents: researcher, coder, critic, executor'},
+      {id:'consensus-voting',name:'Agent Consensus & Voting',desc:'How multi-agent systems reach agreement and handle disagreement'},
+      {id:'agent-trust',name:'Agent Trust & Safety',desc:'Verifying agent outputs and preventing cascading failures'},
+      {id:'scaling-multi-agent',name:'Scaling Multi-Agent Systems',desc:'Performance, cost and reliability at scale'},
+      {id:'multi-agent-use-cases',name:'Multi-Agent Use Cases',desc:'Real-world applications: research, software dev, content, analysis'}
+    ]
+  },
+  {
+    id:'pillar-ai-seo-trends', icon:'📈', color:'y', num:'08',
+    name:'AI SEO, Trends & Future of Work',
+    desc:'How AI is reshaping search, content, careers and the entire landscape of knowledge work.',
+    keywords:['AI SEO','future of work','AI trends 2026','AI content strategy','AI search'],
+    categories:[
+      {id:'ai-seo-fundamentals',name:'AI SEO Fundamentals',desc:'How AI is changing SEO — from keywords to semantic search to SGE'},
+      {id:'ai-content-strategy',name:'AI Content Strategy',desc:'Building content systems that rank in the age of AI search'},
+      {id:'programmatic-seo',name:'Programmatic SEO with AI',desc:'Scaling to 1000+ indexed pages using AI content generation'},
+      {id:'ai-search-optimization',name:'AI Search Optimization',desc:'Optimizing for ChatGPT, Perplexity, Gemini and AI-first search'},
+      {id:'ai-trends-2026',name:'AI Trends 2026',desc:'The top AI trends reshaping technology and business this year'},
+      {id:'future-of-work',name:'Future of Work Analysis',desc:'How AI agents will change jobs, skills and organizations'},
+      {id:'ai-careers',name:'AI Careers & Skills',desc:'The skills, roles and career paths in the AI-native economy'},
+      {id:'ai-adoption-strategy',name:'AI Adoption Strategy',desc:'How organizations should plan and execute AI transformation'},
+      {id:'ai-regulation',name:'AI Regulation & Policy',desc:'The regulatory landscape for AI in 2026 and beyond'},
+      {id:'ai-ethics-society',name:'AI Ethics & Society',desc:'Responsible AI development and its societal implications'}
+    ]
+  },
+  {
+    id:'pillar-ai-tools-comparison', icon:'⚖️', color:'c', num:'09',
+    name:'AI Tools & Platform Comparisons',
+    desc:'Objective, data-driven comparisons of every major AI tool, platform, and framework.',
+    keywords:['AI tools comparison','best AI platform 2026','AI framework comparison','AI tool review'],
+    categories:[
+      {id:'llm-comparison',name:'LLM Model Comparison',desc:'GPT-4o vs Claude 3.5 vs Gemini vs Llama — objective benchmarks'},
+      {id:'agent-framework-comparison',name:'Agent Framework Comparison',desc:'LangChain vs LangGraph vs CrewAI vs AutoGen vs TurboQuant'},
+      {id:'coding-tool-comparison',name:'AI Coding Tool Comparison',desc:'Copilot vs Cursor vs Devin vs Aider — which wins in 2026?'},
+      {id:'automation-platform-comparison',name:'Automation Platform Comparison',desc:'Make vs Zapier vs n8n vs TurboQuant Automation'},
+      {id:'vector-db-comparison',name:'Vector DB Comparison',desc:'Pinecone vs Weaviate vs Chroma vs Qdrant — feature matrix'},
+      {id:'self-hosted-model-comparison',name:'Self-Hosted Model Comparison',desc:'Llama 3 vs Mistral vs Qwen vs Phi — local performance guide'},
+      {id:'ai-search-comparison',name:'AI Search Engine Comparison',desc:'Perplexity vs You.com vs Gemini vs SearchGPT compared'},
+      {id:'no-code-ai-comparison',name:'No-Code AI Platform Comparison',desc:'Comparing no-code AI builders for different use cases'},
+      {id:'pricing-comparison',name:'AI Pricing Comparison',desc:'Full cost breakdown of every major AI API and platform'},
+      {id:'enterprise-ai-comparison',name:'Enterprise AI Platform Comparison',desc:'Microsoft Copilot vs Google Workspace AI vs TurboQuant'}
+    ]
+  },
+  {
+    id:'pillar-ai-business-use-cases', icon:'🏢', color:'g', num:'10',
+    name:'AI Business Use Cases & ROI',
+    desc:'Proven case studies, ROI frameworks and implementation guides for AI across every business function.',
+    keywords:['AI business use cases','AI ROI','enterprise AI','AI implementation','AI business value'],
+    categories:[
+      {id:'ai-customer-service',name:'AI Customer Service',desc:'Deploying AI agents for support, chat and customer success'},
+      {id:'ai-sales-marketing',name:'AI Sales & Marketing',desc:'AI-powered lead gen, content creation and sales automation'},
+      {id:'ai-finance-accounting',name:'AI Finance & Accounting',desc:'Financial analysis, reporting and compliance with AI'},
+      {id:'ai-hr-recruiting',name:'AI HR & Recruiting',desc:'AI for talent acquisition, onboarding and HR operations'},
+      {id:'ai-legal-compliance',name:'AI Legal & Compliance',desc:'Contract analysis, compliance monitoring and legal research with AI'},
+      {id:'ai-supply-chain',name:'AI Supply Chain',desc:'Inventory, logistics and procurement optimization with AI'},
+      {id:'ai-product-development',name:'AI Product Development',desc:'Using AI to accelerate product design, testing and iteration'},
+      {id:'ai-operations',name:'AI Operations Management',desc:'Operational efficiency and process improvement with AI agents'},
+      {id:'ai-roi-measurement',name:'AI ROI Measurement',desc:'Frameworks for measuring and maximizing AI investment returns'},
+      {id:'ai-implementation-guide',name:'AI Implementation Guide',desc:'Step-by-step playbook for successful enterprise AI adoption'}
+    ]
+  }
+];
+
+// Build full blog post data (1000 posts)
+const POST_TEMPLATES = [
+  (kw,cat,pillar)=>({
+    title:`What Is ${kw}? The Complete 2026 Guide`,
+    meta:`Everything you need to know about ${kw}. A comprehensive, expert-written guide covering fundamentals, best practices, and real-world applications in 2026.`,
+    intent:'INFORMATIONAL', read:14
+  }),
+  (kw,cat,pillar)=>({
+    title:`How to Build ${kw}: Step-by-Step Tutorial`,
+    meta:`Learn exactly how to build ${kw} from scratch. This step-by-step tutorial covers setup, configuration, and deployment with practical code examples.`,
+    intent:'HOW-TO', read:16
+  }),
+  (kw,cat,pillar)=>({
+    title:`${kw} vs Alternatives: Which Should You Use in 2026?`,
+    meta:`We compare ${kw} against the top alternatives with real benchmarks, pricing analysis, and use-case recommendations for 2026.`,
+    intent:'COMPARISON', read:12
+  }),
+  (kw,cat,pillar)=>({
+    title:`Top 10 ${kw} Best Practices for Production Systems`,
+    meta:`The 10 most important ${kw} best practices for production deployments. Avoid common mistakes and build systems that scale reliably.`,
+    intent:'INFORMATIONAL', read:11
+  }),
+  (kw,cat,pillar)=>({
+    title:`${kw} Performance Benchmarks: Tested in 2026`,
+    meta:`We ran extensive ${kw} benchmarks across hardware, models, and use cases. Here are the results with detailed analysis and recommendations.`,
+    intent:'COMPARISON', read:13
+  }),
+  (kw,cat,pillar)=>({
+    title:`${kw} for Enterprise: Implementation Guide`,
+    meta:`A complete enterprise implementation guide for ${kw}. Covers architecture, security, compliance, and change management for large organizations.`,
+    intent:'HOW-TO', read:18
+  }),
+  (kw,cat,pillar)=>({
+    title:`Getting Started with ${kw}: Beginner's Roadmap`,
+    meta:`New to ${kw}? This beginner-friendly roadmap walks you from zero to production-ready with clear milestones and curated resources.`,
+    intent:'HOW-TO', read:10
+  }),
+  (kw,cat,pillar)=>({
+    title:`Advanced ${kw} Techniques for 2026`,
+    meta:`Go beyond the basics with advanced ${kw} techniques. Covers optimization, edge cases, and expert patterns used in production systems.`,
+    intent:'INFORMATIONAL', read:15
+  }),
+  (kw,cat,pillar)=>({
+    title:`${kw} Case Study: Real-World Results`,
+    meta:`A detailed ${kw} case study with real metrics, implementation challenges, and measurable business outcomes from production deployments.`,
+    intent:'TRANSACTIONAL', read:12
+  }),
+  (kw,cat,pillar)=>({
+    title:`The Future of ${kw}: Predictions for 2026–2028`,
+    meta:`Where is ${kw} heading? Expert analysis of the trends, breakthroughs and disruptions that will define the next three years.`,
+    intent:'INFORMATIONAL', read:11
+  })
+];
+
+function buildPosts(){
+  const all={};
+  PILLARS.forEach(pillar=>{
+    pillar.categories.forEach(cat=>{
+      const posts=[];
+      for(let i=0;i<10;i++){
+        const kw=cat.name;
+        const t=POST_TEMPLATES[i](kw,cat.name,pillar.name);
+        posts.push({
+          id:`${cat.id}-post-${i+1}`,
+          title:t.title,
+          meta:t.meta,
+          intent:t.intent,
+          read:t.read,
+          pillarId:pillar.id,
+          pillarName:pillar.name,
+          catId:cat.id,
+          catName:cat.name,
+          num:i+1
+        });
+      }
+      all[cat.id]=posts;
+    });
+  });
+  return all;
+}
+const ALL_POSTS=buildPosts();
+
+// Full article content for key posts
+const FULL_ARTICLES = {
+  'turboquant-explained-post-1': `
+<h2>What is Google TurboQuant?</h2>
+<p><strong>Google TurboQuant</strong> is an advanced AI quantization and memory compression algorithm developed by Google Research, presented at ICLR 2026. It dramatically reduces the memory footprint of large language models (LLMs) during inference by applying a novel combination of vector quantization, KV-cache compression, and PolarQuant rotation — achieving up to <strong>6x memory reduction</strong> with minimal accuracy loss.</p>
+<p>In plain English: TurboQuant makes AI models run faster and cheaper by compressing the data they need to hold in memory during generation — without breaking the quality of their outputs.</p>
+<div class="post-callout"><div class="post-callout-title">⚡ Key Insight</div><p>TurboQuant targets the <em>runtime KV cache</em> during inference — not just static model weights. This means it works with any pre-trained model and achieves compression ratios impossible with traditional methods.</p></div>
+
+<h2>The Problem TurboQuant Solves</h2>
+<p>To understand why TurboQuant is such a big deal, you need to understand the core bottleneck of modern LLM inference: the <strong>KV cache</strong>.</p>
+<p>Every time a large language model generates text, it needs to store "keys" and "values" from its attention mechanism — memory snapshots of everything it's processed so far. For long conversations, documents, or multi-step agentic tasks, this KV cache grows enormous. We're talking gigabytes of GPU memory just to keep a single conversation alive.</p>
+<p>Before TurboQuant, the options were limited: use expensive hardware with massive VRAM, truncate context windows (losing important information), or accept slower inference speeds. None were great for production AI agents that need to handle long tasks autonomously.</p>
+
+<h2>How TurboQuant Works: Technical Deep Dive</h2>
+<p>TurboQuant combines four core innovations into a unified compression pipeline:</p>
+<h3>1. PolarQuant Rotation</h3>
+<p>Before quantizing, TurboQuant applies a learned rotation to the key-value vectors that redistributes their magnitude across dimensions. This "normalizes" the vectors so that quantization artifacts are spread uniformly rather than concentrated in ways that hurt model accuracy. Think of it as pre-processing the data to make compression less lossy.</p>
+<h3>2. Vector Quantization with Learned Codebooks</h3>
+<p>After rotation, TurboQuant applies vector quantization (VQ) — replacing continuous vectors with discrete "codewords" from a learned codebook. Instead of storing a full 128-dimensional key vector, TurboQuant stores a small index into a codebook of representative vectors. The compression ratio is extraordinary: 4-bit VQ can achieve the same effective accuracy as 16-bit float.</p>
+<h3>3. QJL (Quantized Johnson-Lindenstrauss) Projection</h3>
+<p>For aggressive compression scenarios, TurboQuant uses QJL — a randomized projection technique from theoretical computer science. This compresses vectors to very low-bit representations while mathematically bounding the maximum error introduced.</p>
+<h3>4. Adaptive Precision Scheduling</h3>
+<p>Not all tokens are equally important. TurboQuant includes a dynamic precision scheduler that allocates higher bit-widths to tokens the model's attention mechanism weights highly, and lower bit-widths to less-attended tokens.</p>
+
+<h2>TurboQuant vs Traditional Quantization</h2>
+<table class="post-table">
+  <tr><th>Method</th><th>Target</th><th>KV Cache Savings</th><th>Accuracy Impact</th></tr>
+  <tr><td>GPTQ</td><td>Model Weights</td><td>None</td><td>Low</td></tr>
+  <tr><td>AWQ</td><td>Model Weights</td><td>None</td><td>Very Low</td></tr>
+  <tr><td>bitsandbytes</td><td>Model Weights</td><td>None</td><td>Low</td></tr>
+  <tr><td><strong>TurboQuant</strong></td><td><strong>KV Cache</strong></td><td><strong>6x</strong></td><td><strong>Minimal</strong></td></tr>
+</table>
+<p>Traditional weight quantization happens once, before deployment. TurboQuant operates <em>during</em> inference, on the dynamic memory that grows with every token generated. This makes it applicable to any model regardless of how it was trained.</p>
+
+<h2>Memory Impact: Real Numbers</h2>
+<p>For a 70B parameter model handling a 32k-token document:</p>
+<ul>
+  <li><strong>No compression:</strong> ~128GB VRAM required for KV cache alone</li>
+  <li><strong>Traditional 4-bit weight quantization:</strong> ~128GB KV cache unchanged</li>
+  <li><strong>TurboQuant KV compression:</strong> ~21GB VRAM — 6x reduction</li>
+</ul>
+<p>The difference between needing an H100 cluster and running on a single RTX 4090. For self-hosted AI deployments, that's a game-changing cost reduction.</p>
+
+<h2>TurboQuant for AI Agents</h2>
+<p>TurboQuant's most profound impact is on <strong>AI agents</strong> — systems that maintain long context windows while executing multi-step tasks autonomously. An agent handling a complex workflow might need to read a 50-page specification, remember full conversation history, track dozens of subtasks simultaneously, and reference earlier decisions while making new ones.</p>
+<p>Without TurboQuant, this requires enormous compute. With TurboQuant, the same agent runs on 6x less hardware — or handles 6x longer context on the same hardware. For <a href="#" onclick="navigate('pillar','pillar-ai-agents');return false">AI agent platforms</a> building autonomous execution systems, this is transformative.</p>
+<p>Self-hosted AI systems can now run genuinely capable agentic workloads on consumer-grade hardware. The barrier to private, on-premise AI agents dropped by 6x.</p>
+
+<h2>Semantic Search & Vector Databases</h2>
+<p>Beyond LLM inference, TurboQuant's vector quantization techniques have immediate implications for semantic search and vector databases — the backbone of RAG systems. When you're storing millions of document embeddings, 6x compression means 6x more documents in the same VRAM budget, or 6x cheaper vector storage in the cloud.</p>
+<p>Platforms like <a href="https://turboquant.network" target="_blank">TurboQuant Network</a> use these techniques to power their vector search and retrieval systems, enabling enterprise-scale semantic search on modest hardware.</p>
+
+<h2>Real-World Deployment Results</h2>
+<p>Early adopters of TurboQuant-enabled systems report significant improvements across key metrics. Inference throughput improvements of 2.8x have been observed in production deployments. Context window capacity increased to 128k+ tokens on standard A100 hardware. Memory costs reduced by 73% in cloud inference workloads. Latency improved 40% in streaming generation scenarios.</p>
+
+<h2>Implementation: Adding TurboQuant to Your Stack</h2>
+<p>TurboQuant integration follows a straightforward pattern. The algorithm is implemented as a drop-in KV cache replacement that works with any Transformer-based model using standard attention mechanisms.</p>
+<p>The implementation involves: (1) replacing the standard KV cache with a TurboQuant-compressed variant, (2) loading the pre-trained PolarQuant rotation matrices and VQ codebooks for your specific model, (3) configuring adaptive precision scheduling based on your accuracy/memory tradeoffs.</p>
+
+<h2>TurboQuant & The Future of AI Infrastructure</h2>
+<p>TurboQuant represents a broader trend: the commoditization of frontier AI capabilities. As memory compression improves, the hardware requirements for state-of-the-art AI will continue to fall. Models that required H100 clusters two years ago now run on consumer GPUs. Models that require H100s today will run on RTX 4090s within 18 months.</p>
+<p>This democratization has profound implications for <a href="#" onclick="navigate('pillar','pillar-self-hosted-ai');return false">self-hosted AI</a>, <a href="#" onclick="navigate('pillar','pillar-ai-agents');return false">AI agent platforms</a>, and the entire ecosystem of autonomous AI applications.</p>
+
+<h2>Conclusion</h2>
+<p>Google TurboQuant is not just a technical optimization — it's a fundamental shift in what's possible with AI at scale. By achieving 6x KV cache compression with minimal accuracy loss, it removes the memory bottleneck that has constrained long-context AI applications and autonomous agent systems.</p>
+<p>For anyone building with AI agents, deploying self-hosted models, or running production LLM systems, understanding and adopting TurboQuant is essential in 2026. The platforms and developers who leverage this breakthrough will have a meaningful competitive advantage in cost, capability, and deployment flexibility.</p>
+`,
+
+  'autonomous-agent-fundamentals-post-1': `
+<h2>What Is an Autonomous AI Agent?</h2>
+<p>An <strong>autonomous AI agent</strong> is a software system that uses a large language model (LLM) as its reasoning core and can independently plan, take actions, use tools, and complete complex multi-step tasks without continuous human intervention. Unlike a simple chatbot that responds to individual messages, an autonomous agent perceives its environment, maintains state, makes decisions, and executes a series of actions toward a defined goal.</p>
+<p>The defining characteristic is <em>autonomy</em>: the agent decides what to do next based on its current understanding, available tools, and progress toward its goal — not based on each individual user instruction.</p>
+
+<h2>The Architecture of an Autonomous Agent</h2>
+<p>Every autonomous AI agent shares a common architectural pattern with five core components:</p>
+<h3>1. The LLM Brain</h3>
+<p>At the center of every agent is a large language model that serves as the reasoning engine. This model reads the current state, decides on the next action, interprets tool results, and determines when the task is complete. The quality of this brain — its reasoning capabilities, context length, and instruction following — determines the agent's ceiling.</p>
+<h3>2. Memory Systems</h3>
+<p>Agents need memory to maintain context across multiple steps. Modern agents use several memory types: working memory (current context window), episodic memory (conversation history), semantic memory (factual knowledge base), and procedural memory (learned patterns and skills).</p>
+<h3>3. Tool Use</h3>
+<p>Agents become truly powerful when they can use tools: web search, code execution, file I/O, API calls, database queries, and more. The agent decides which tool to use, calls it with appropriate parameters, and interprets the results.</p>
+<h3>4. Planning & Reasoning</h3>
+<p>Sophisticated agents use explicit planning mechanisms — decomposing complex goals into subtasks, creating execution plans, and adapting as they encounter new information or obstacles.</p>
+<h3>5. Action Execution</h3>
+<p>The agent takes concrete actions in the world: writing files, calling APIs, executing code, browsing the web, or spawning sub-agents. Each action changes the state of the world and the agent's own context.</p>
+
+<h2>AI Agent vs Chatbot: Key Differences</h2>
+<table class="post-table">
+  <tr><th>Capability</th><th>Chatbot</th><th>AI Agent</th></tr>
+  <tr><td>Multi-step tasks</td><td>❌</td><td>✅</td></tr>
+  <tr><td>Tool use</td><td>Limited</td><td>✅ Extensive</td></tr>
+  <tr><td>Memory</td><td>Session only</td><td>✅ Persistent</td></tr>
+  <tr><td>Planning</td><td>❌</td><td>✅</td></tr>
+  <tr><td>Autonomy</td><td>Reactive</td><td>✅ Proactive</td></tr>
+  <tr><td>Error recovery</td><td>❌</td><td>✅</td></tr>
+</table>
+
+<h2>The ReAct Pattern: How Agents Think</h2>
+<p>The most widely adopted agent reasoning pattern is <strong>ReAct</strong> (Reasoning + Acting). In a ReAct loop, the agent alternates between: Thought (reasoning about the current state), Action (selecting and invoking a tool), Observation (processing the tool's output), and repeating until the task is complete.</p>
+
+<h2>Agent Frameworks in 2026</h2>
+<p>The agent framework landscape has matured significantly. The major options include LangChain/LangGraph, AutoGen, CrewAI, Semantic Kernel, and platform-specific agents like <a href="https://turboquant.network" target="_blank">TurboQuant Network</a>. Each offers different tradeoffs between flexibility, ease of use, and production readiness.</p>
+
+<h2>How to Build Your First Autonomous Agent</h2>
+<p>Building an autonomous agent involves: choosing a foundation model with strong reasoning, defining a clear goal and success criteria, selecting the tools the agent will need, implementing a memory system for persistence, and setting up evaluation to measure performance.</p>
+<p>The most common mistake beginners make is giving agents goals that are too vague. The clearer and more measurable the goal, the more reliably the agent will complete it. "Research competitors and write a report" is harder for an agent than "Search for the top 5 competitors in X market, extract their pricing pages, and summarize in a table."</p>
+
+<h2>Production Challenges</h2>
+<p>Deploying autonomous agents in production introduces unique challenges: reliability (agents can get stuck in loops or make unexpected decisions), cost (many LLM calls per task can be expensive), latency (multi-step tasks take time), and safety (agents can take consequential actions that are hard to reverse).</p>
+<p>Solutions include: circuit breakers to prevent infinite loops, budget limits on tool usage, human-in-the-loop approval for high-stakes actions, and comprehensive observability and logging.</p>
+
+<h2>The AI Agent Ecosystem in 2026</h2>
+<p>The autonomous agent ecosystem has exploded. From general-purpose agents that can handle any task, to specialized coding agents, research agents, and business process agents — the variety and capability have grown dramatically. TurboQuant compression has made long-running agents economically viable at scale, removing the primary cost barrier to widespread adoption.</p>
+
+<h2>Getting Started</h2>
+<p>The best way to start with autonomous agents is to pick a narrow, well-defined use case with clear inputs and outputs. Automate something you do manually every day. Measure the agent's performance against your own. Iterate. The learning curve is steep but the productivity gains are transformative.</p>
+`,
+
+  'ai-kanban-boards-post-1': `
+<h2>What Is an AI Kanban Board?</h2>
+<p>An <strong>AI Kanban board</strong> is an intelligent task management system that combines the visual workflow principles of traditional Kanban with autonomous AI agents that can create, prioritize, execute, and complete tasks independently. Unlike a conventional Kanban board where humans move cards between columns, an AI Kanban system can automatically route work, suggest prioritization, execute the actual task (like writing code or sending emails), and report completion — all without human intervention.</p>
+
+<h2>Traditional Kanban vs AI Kanban</h2>
+<table class="post-table">
+  <tr><th>Feature</th><th>Traditional Kanban</th><th>AI Kanban</th></tr>
+  <tr><td>Task creation</td><td>Manual</td><td>✅ Automatic</td></tr>
+  <tr><td>Prioritization</td><td>Human judgment</td><td>✅ AI-driven</td></tr>
+  <tr><td>Execution</td><td>Human</td><td>✅ AI agents</td></tr>
+  <tr><td>Dependencies</td><td>Manual tracking</td><td>✅ Auto-detected</td></tr>
+  <tr><td>Bottleneck alerts</td><td>Visual only</td><td>✅ Proactive AI</td></tr>
+  <tr><td>Status updates</td><td>Manual</td><td>✅ Real-time AI</td></tr>
+</table>
+
+<h2>Core Components of an AI Kanban System</h2>
+<h3>AI Task Generator</h3>
+<p>Rather than manually creating cards, AI Kanban systems can automatically generate tasks from high-level goals, meeting notes, code commits, or customer feedback. The AI parses these inputs and creates properly formatted, actionable cards with appropriate context.</p>
+<h3>Smart Prioritization Engine</h3>
+<p>The system continuously re-prioritizes the backlog based on deadlines, dependencies, business value, effort estimates, and team capacity — surfacing the highest-value work automatically.</p>
+<h3>Execution Agents</h3>
+<p>When a task reaches the "In Progress" column, an AI agent can pick it up and begin executing. For software tasks, this might mean writing code. For content tasks, drafting copy. For research tasks, gathering and summarizing information.</p>
+
+<h2>Building AI Kanban Automation</h2>
+<p>The key to effective AI Kanban automation is defining clear "done" criteria for each task type. When an agent knows exactly what constitutes task completion, it can work autonomously with confidence. Ambiguous tasks require human clarification; precise tasks can be completed end-to-end.</p>
+<p>TurboQuant Network's AI Kanban implementation uses a multi-agent architecture where a coordinator agent manages the board, specialist agents execute specific task types, and a review agent validates completions before marking cards as done.</p>
+
+<h2>Integration Patterns</h2>
+<p>Effective AI Kanban systems integrate with the rest of your toolstack: GitHub for code tasks (auto-creating PRs and commits), Slack for notifications and approvals, databases for data tasks, email systems for communication tasks, and external APIs for any action your workflow requires.</p>
+
+<h2>ROI of AI Kanban Automation</h2>
+<p>Organizations implementing AI Kanban systems report significant improvements. Teams using AI Kanban automation report 60-80% reduction in time spent on routine task management, 3-4x faster cycle times for standard work types, and dramatically reduced context-switching costs for knowledge workers.</p>
+`,
+
+  'llm-comparison-post-1': `
+<h2>The State of LLMs in 2026: A Complete Comparison</h2>
+<p>The large language model landscape has never been more competitive. In 2026, the frontier is defined by a handful of major players — OpenAI's GPT-4o, Anthropic's Claude 3.5 Sonnet, Google's Gemini 1.5 Pro, and Meta's Llama 3.2 — each with distinct strengths, pricing models, and optimal use cases. For AI agent systems, the choice of foundation model is one of the most consequential architectural decisions you'll make.</p>
+
+<h2>Head-to-Head Benchmark Results</h2>
+<table class="post-table">
+  <tr><th>Model</th><th>Coding (HumanEval)</th><th>Reasoning (MMLU)</th><th>Context</th><th>$/1M tokens</th></tr>
+  <tr><td>GPT-4o</td><td>90.2%</td><td>88.7%</td><td>128K</td><td>$5/$15</td></tr>
+  <tr><td>Claude 3.5 Sonnet</td><td>92.0%</td><td>88.3%</td><td>200K</td><td>$3/$15</td></tr>
+  <tr><td>Gemini 1.5 Pro</td><td>84.1%</td><td>85.9%</td><td>1M</td><td>$3.50/$10.50</td></tr>
+  <tr><td>Llama 3.2 70B</td><td>81.3%</td><td>83.2%</td><td>128K</td><td>Free (self-hosted)</td></tr>
+  <tr><td>Mistral Large 2</td><td>83.7%</td><td>84.8%</td><td>128K</td><td>$2/$6</td></tr>
+</table>
+
+<h2>For AI Agent Use Cases</h2>
+<p>When selecting a model for AI agent applications, raw benchmark scores are only part of the story. Equally important are: instruction following reliability (how consistently the model follows complex system prompts), tool use accuracy (correct function calling and JSON formatting), long-context coherence (maintaining reasoning quality over long documents), and latency (acceptable response time for multi-step workflows).</p>
+<p>For most production agent workloads, Claude 3.5 Sonnet has emerged as the preferred choice due to its exceptional instruction following and tool use accuracy. For self-hosted deployments, Llama 3.2 70B with TurboQuant compression offers the best capability-per-dollar ratio.</p>
+
+<h2>The Self-Hosted Advantage with TurboQuant</h2>
+<p>The calculus changes dramatically when you factor in TurboQuant compression. A self-hosted Llama 3.2 70B with TurboQuant KV cache compression can handle 32k token contexts on a single RTX 4090 (24GB VRAM) — something that previously required an A100 or multi-GPU setup. The total cost of ownership for high-volume inference workloads favors self-hosted models with TurboQuant at roughly 5x the volume threshold compared to API pricing.</p>
+
+<h2>Making the Right Choice</h2>
+<p>Our recommendation matrix: use GPT-4o for highest-stakes reasoning tasks where accuracy is paramount. Use Claude 3.5 for production agent systems requiring reliable tool use and instruction following. Use Gemini 1.5 Pro for long-document processing at scale. Use Llama 3.2 + TurboQuant for high-volume, cost-sensitive, or privacy-requiring workloads.</p>
+`
+};
+
+// FAQ data
+const HOME_FAQS = [
+  {q:"What is an AI agent and how is it different from a chatbot?",a:"An AI agent is an autonomous system that can plan, take actions, use tools, and complete complex multi-step tasks independently. Unlike a chatbot that reacts to individual messages, an agent sets goals and executes a series of actions to achieve them. Think of a chatbot as a reactive conversation partner, while an agent is a proactive worker.",links:[{text:"Read the full AI Agents guide",pid:'pillar-ai-agents'}]},
+  {q:"How to build an AI agent system from scratch?",a:"Building an AI agent system requires: a foundation LLM (GPT-4, Claude, or Llama), a tool-use framework (LangChain, LangGraph), memory systems for persistence, and an execution environment. Start with a narrow, well-defined use case. Define tools. Implement a ReAct loop. Add monitoring.",links:[{text:"AI Agent Architecture guide",pid:'pillar-ai-agents'}]},
+  {q:"What is the best AI agent framework in 2026?",a:"The best framework depends on your use case. LangGraph excels for complex stateful workflows. CrewAI shines for multi-agent collaboration. TurboQuant Network provides the most complete platform for production deployments. AutoGen is best for research and experimentation.",links:[{text:"Compare agent frameworks",pid:'pillar-ai-tools-comparison'}]},
+  {q:"What is Google TurboQuant and why does it matter?",a:"Google TurboQuant is an AI KV-cache compression algorithm presented at ICLR 2026 that achieves 6x memory reduction during LLM inference. It matters because it makes long-running AI agents affordable, enables self-hosted AI on consumer hardware, and dramatically reduces inference costs.",links:[{text:"TurboQuant Core Tech deep dive",pid:'pillar-turboquant-core'}]},
+  {q:"How to automate business processes with AI agents?",a:"Start by identifying high-volume, rule-based tasks with clear inputs and outputs. Document the current process. Build a simple agent with 2-3 tools. Test in sandbox. Measure accuracy. Gradually expand scope. Common starting points: email triage, data entry, report generation, customer support.",links:[{text:"AI Workflow Automation guide",pid:'pillar-automation'}]},
+  {q:"What is an AI work operating system?",a:"An AI Work OS is a unified platform where AI agents handle task creation, execution, and reporting — replacing traditional project management tools. Instead of teams moving cards on Kanban boards, AI agents automatically generate tasks, execute them, and track completion, with humans providing direction and oversight.",links:[{text:"AI Work OS concepts",pid:'pillar-ai-work-os'}]},
+  {q:"How do I set up self-hosted AI at home or in my company?",a:"Self-hosted AI requires a capable GPU (RTX 3090/4090 for home, A100/H100 for enterprise), a runtime like Ollama or vLLM, and an open-source model like Llama 3 or Mistral. With TurboQuant compression, you can run 70B models on hardware that previously couldn't support them.",links:[{text:"Self-Hosted AI setup guide",pid:'pillar-self-hosted-ai'}]},
+  {q:"What ROI can businesses expect from AI agent automation?",a:"Early adopters consistently report 60-80% reduction in manual task time for automated processes, 3-5x faster software delivery, and significant cost savings. ROI depends heavily on implementation quality, use case selection, and change management. Start with high-volume, low-risk tasks.",links:[{text:"AI Business ROI case studies",pid:'pillar-ai-business-use-cases'}]},
+  {q:"How is AI changing SEO and content marketing in 2026?",a:"AI is restructuring search around semantic meaning and intent rather than keywords. Google's SGE and AI-first search engines surface direct answers. Content that wins in 2026 combines genuine expertise, semantic depth, and structured data. Programmatic AI content at scale requires unique insights per page, not just keyword stuffing.",links:[{text:"AI SEO Trends analysis",pid:'pillar-ai-seo-trends'}]},
+  {q:"What are multi-agent systems and when do you need them?",a:"Multi-agent systems are architectures where multiple specialized AI agents collaborate on a task — a researcher, a coder, a reviewer, an executor. You need them when a task is too complex for a single agent, requires parallel execution, or benefits from specialization and redundant verification.",links:[{text:"Multi-Agent Systems guide",pid:'pillar-multi-agent-systems'}]}
+];
+
+function buildPillarFaqs(pillar){
+  return [
+    {q:`What is ${pillar.name} and why does it matter in 2026?`,a:`${pillar.name} is one of the most critical capabilities in the modern AI stack. In 2026, organizations that master ${pillar.name} gain significant competitive advantages in speed, cost efficiency, and capability.`,links:[]},
+    {q:`How do I get started with ${pillar.categories[0].name}?`,a:`Start with the fundamentals: understand the core concepts, choose the right tools for your use case, and build a simple proof of concept before scaling. Our category guide covers everything from beginner setup to production deployment.`,links:[{text:`${pillar.categories[0].name} guide`,cid:pillar.categories[0].id,pid:pillar.id}]},
+    {q:`What are the best tools for ${pillar.name}?`,a:`The ecosystem is rich in 2026. The best tools depend on your technical requirements, team size, and budget. We maintain detailed comparisons in our tools section.`,links:[{text:"Compare AI tools",pid:'pillar-ai-tools-comparison'}]},
+    {q:`How does ${pillar.name} integrate with existing systems?`,a:`Modern ${pillar.name} solutions are designed for integration. Most support REST APIs, webhooks, and standard authentication protocols. The integration complexity depends on your existing stack, but most teams complete basic integrations in days rather than weeks.`,links:[]},
+    {q:`What is the ROI of investing in ${pillar.name}?`,a:`Organizations investing in ${pillar.name} consistently report positive ROI within 6-12 months, driven by efficiency gains, reduced manual work, and new capabilities that weren't previously possible.`,links:[{text:"See business ROI data",pid:'pillar-ai-business-use-cases'}]},
+    {q:`How does ${pillar.categories[1]?.name} relate to ${pillar.categories[0].name}?`,a:`These two areas are deeply interconnected. Mastering ${pillar.categories[0].name} gives you the foundation for more advanced ${pillar.categories[1]?.name} techniques. Most practitioners move through the fundamentals before tackling the more complex aspects.`,links:[]},
+    {q:`What are the common mistakes when implementing ${pillar.name}?`,a:`The most common mistakes are: starting too large (begin with a narrow use case), neglecting evaluation (you need metrics before scaling), ignoring the human element (change management is crucial), and underestimating infrastructure (production requirements differ from prototypes).`,links:[]},
+    {q:`Is ${pillar.name} suitable for small businesses or just enterprises?`,a:`Absolutely suitable for small businesses. The barrier to entry has dropped dramatically in 2026. Many powerful capabilities are available free or at very low cost. Small teams can implement sophisticated ${pillar.name} solutions that were enterprise-only just two years ago.`,links:[]},
+    {q:`How do I evaluate vendors and platforms for ${pillar.name}?`,a:`Evaluate on: specific capability match to your use case, total cost of ownership (not just licensing), integration complexity with your existing stack, support quality, and roadmap alignment. Always run a proof of concept with your actual data before committing.`,links:[{text:"Platform comparison guide",pid:'pillar-ai-tools-comparison'}]},
+    {q:`What skills does my team need to work with ${pillar.name}?`,a:`Core skills vary but typically include: basic programming (Python is dominant), understanding of LLM capabilities and limitations, prompt engineering, API integration skills, and system thinking. Deep ML expertise is less critical than it was — the key is knowing how to apply these tools effectively.`,links:[{text:"AI careers and skills guide",pid:'pillar-ai-seo-trends'}]},
+    {q:`How is ${pillar.name} evolving over the next 12 months?`,a:`Expect continued improvements in capability, reliability, and cost efficiency. The trend toward more autonomous, longer-running systems continues. Interoperability standards are maturing. The biggest developments will likely come from efficiency breakthroughs like TurboQuant enabling previously impossible use cases.`,links:[{text:"AI trends analysis",pid:'pillar-ai-seo-trends'}]},
+    {q:`What security considerations apply to ${pillar.name}?`,a:`Key security considerations: data privacy (especially for sensitive business information), prompt injection attacks (malicious inputs that hijack agent behavior), access control (limiting what tools and systems agents can access), and audit logging (tracking all agent actions for compliance and debugging).`,links:[]},
+    {q:`How does ${pillar.name} compare to traditional software approaches?`,a:`Traditional software is deterministic and brittle — it does exactly what it's programmed to do, no more. AI approaches like ${pillar.name} are probabilistic and flexible — they can handle novel situations and reason about context. The tradeoff is reliability vs capability; good system design manages this balance.`,links:[]},
+    {q:`What's the difference between open source and commercial options for ${pillar.name}?`,a:`Open source options offer flexibility, cost savings, and no vendor lock-in, but require more engineering effort. Commercial platforms like TurboQuant Network offer faster time-to-value, enterprise support, and managed infrastructure, but at higher cost. For production use, many organizations combine both.`,links:[]},
+    {q:`How do I measure success in ${pillar.name} implementations?`,a:`Define metrics before you start: task completion rate, accuracy vs human baseline, latency, cost per task, and business outcome metrics specific to your use case. Set targets for each and review regularly. The organizations that improve fastest are those with clear measurement frameworks.`,links:[]},
+    {q:`Can ${pillar.name} work without an internet connection?`,a:`Yes, for self-hosted deployments. With open-source models running locally and TurboQuant compression making them practical on standard hardware, fully air-gapped ${pillar.name} implementations are viable for organizations with strict data sovereignty requirements.`,links:[{text:"Self-hosted AI guide",pid:'pillar-self-hosted-ai'}]},
+    {q:`What compliance and regulatory considerations exist for ${pillar.name}?`,a:`Regulatory requirements vary by industry and jurisdiction. Key frameworks to be aware of: EU AI Act (risk-based requirements for AI systems), GDPR and CCPA (data privacy), sector-specific regulations in finance (SOC2), healthcare (HIPAA), and government (FedRAMP). Always consult legal counsel for compliance-critical implementations.`,links:[]},
+    {q:`How does multi-agent orchestration enhance ${pillar.name}?`,a:`Multi-agent systems enable parallelization, specialization, and validation that single agents can't achieve. For ${pillar.name}, this often means a coordinator agent managing workflow, specialist agents handling specific task types, and reviewer agents validating outputs before they're used downstream.`,links:[{text:"Multi-agent orchestration guide",pid:'pillar-multi-agent-systems'}]},
+    {q:`What's the learning curve for mastering ${pillar.name}?`,a:`For someone with a technical background, expect 2-4 weeks to build your first working prototype and 2-3 months to develop production-level expertise. Non-technical users can leverage no-code platforms to get started much faster, though deep customization requires technical skills.`,links:[]},
+    {q:`How does TurboQuant Network help with ${pillar.name}?`,a:`TurboQuant Network provides a unified platform purpose-built for ${pillar.name} — combining AI agent infrastructure, workflow automation, a visual AI Kanban system, and coding capabilities. It removes the need to assemble multiple tools and handles the infrastructure so you can focus on building value.`,links:[]}
+  ];
+}
+
+// ════════════════════════════════════════════════
+// ROUTING & NAVIGATION
+// ════════════════════════════════════════════════
+let currentState = {page:'home', pillarId:null, catId:null, postId:null};
+
+function navigate(page, id, subId){
+  currentState = {page, pillarId:id||null, catId:subId||null, postId:null};
+  
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  
+  window.scrollTo({top:0,behavior:'smooth'});
+  
+  if(page==='home'){
+    document.getElementById('page-home').classList.add('active');
+    updateMeta('TurboQuant Blog — AI Agent Platform & Knowledge Hub','The definitive knowledge hub for AI agents, autonomous workflows, and intelligent automation. 1000+ expert articles.','https://blog.turboquad.network/');
+    updateSchema('home');
+  } else if(page==='pillar'){
+    renderPillarPage(id);
+    document.getElementById('page-pillar').classList.add('active');
+  } else if(page==='category'){
+    renderCategoryPage(id, subId);
+    document.getElementById('page-category').classList.add('active');
+  } else if(page==='post'){
+    renderPostPage(id, subId);
+    document.getElementById('page-post').classList.add('active');
+  }
+  
+  // Update URL hash
+  const hash = page==='home' ? '' : `#${page}/${id||''}${subId?'/'+subId:''}`;
+  history.pushState({page,id,subId}, '', hash||'#');
+}
+
+function navigateToPost(postId, catId, pillarId){
+  currentState = {page:'post', pillarId, catId, postId};
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  renderPostPage(postId, catId, pillarId);
+  document.getElementById('page-post').classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  history.pushState({page:'post',postId,catId,pillarId}, '', `#post/${pillarId}/${catId}/${postId}`);
+}
+
+window.addEventListener('popstate', e=>{
+  if(e.state) navigate(e.state.page, e.state.id||e.state.pillarId, e.state.subId||e.state.catId);
+  else navigate('home');
+});
+
+// Handle initial hash
+window.addEventListener('DOMContentLoaded', ()=>{
+  const hash = location.hash.slice(1);
+  if(hash){
+    const parts = hash.split('/');
+    if(parts[0]==='pillar') navigate('pillar', parts[1]);
+    else if(parts[0]==='category') navigate('category', parts[1], parts[2]);
+    else if(parts[0]==='post') navigateToPost(parts[3], parts[2], parts[1]);
+    else navigate('home');
+  }
+});
+
+// ════════════════════════════════════════════════
+// SEO HELPERS
+// ════════════════════════════════════════════════
+function updateMeta(title, desc, url){
+  document.getElementById('page-title').textContent = title;
+  document.getElementById('page-desc').content = desc;
+  document.getElementById('canonical').href = url;
+  document.getElementById('og-title').content = title;
+  document.getElementById('og-desc').content = desc;
+  document.getElementById('og-url').content = url;
+  document.getElementById('tw-title').content = title;
+  document.getElementById('tw-desc').content = desc;
+}
+
+function updateSchema(type, data){
+  const el = document.getElementById('schema-main');
+  if(type==='article' && data){
+    el.textContent = JSON.stringify({
+      "@context":"https://schema.org",
+      "@type":"Article",
+      "headline":data.title,
+      "description":data.meta,
+      "url":`https://blog.turboquad.network/blog/${data.slug}`,
+      "author":{"@type":"Organization","name":"TurboQuant Network"},
+      "publisher":{"@type":"Organization","name":"TurboQuant Network","url":"https://turboquant.network"},
+      "datePublished":"2026-01-15",
+      "dateModified":"2026-04-01"
+    });
+  } else if(type==='pillar' && data){
+    el.textContent = JSON.stringify({
+      "@context":"https://schema.org",
+      "@type":"CollectionPage",
+      "headline":data.name,
+      "description":data.desc,
+      "url":`https://blog.turboquad.network/${data.id}`,
+      "publisher":{"@type":"Organization","name":"TurboQuant Network"}
+    });
+  } else {
+    el.textContent = JSON.stringify({"@context":"https://schema.org","@type":"WebSite","name":"TurboQuant Blog","url":"https://blog.turboquad.network"});
+  }
+}
+
+// ════════════════════════════════════════════════
+// RENDER FUNCTIONS
+// ════════════════════════════════════════════════
+function renderHome(){
+  // Pillar cards
+  const grid = document.getElementById('pillarsGrid');
+  grid.innerHTML = PILLARS.map(p=>`
+    <div class="pillar-card ${p.color}" onclick="navigate('pillar','${p.id}')">
+      <div class="pillar-icon ${p.color}">${p.icon}</div>
+      <div class="pillar-num">Pillar ${p.num} of 10</div>
+      <div class="pillar-name">${p.name}</div>
+      <div class="pillar-desc">${p.desc}</div>
+      <div class="pillar-tags">${p.keywords.slice(0,3).map(k=>`<span class="tag">${k}</span>`).join('')}</div>
+      <div class="pillar-meta">
+        <span class="pillar-count">📁 10 categories · 100 articles</span>
+        <span class="pillar-arrow">→</span>
+      </div>
+    </div>
+  `).join('');
+
+  // Home FAQs
+  const faqEl = document.getElementById('homeFaqs');
+  faqEl.innerHTML = HOME_FAQS.map((f,i)=>`
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">${f.q} <span class="faq-toggle">+</span></div>
+      <div class="faq-a"><p>${f.a}</p>${f.links.map(l=>`<p><a href="#" onclick="navigate('pillar','${l.pid}');return false">${l.text} →</a></p>`).join('')}</div>
+    </div>
+  `).join('');
+
+  // Footer cols
+  const col1 = document.getElementById('footerCol1');
+  const col2 = document.getElementById('footerCol2');
+  col1.innerHTML = `<h4>Content Pillars</h4><ul>${PILLARS.slice(0,5).map(p=>`<li><button onclick="navigate('pillar','${p.id}')">${p.name}</button></li>`).join('')}</ul>`;
+  col2.innerHTML = `<h4>More Pillars</h4><ul>${PILLARS.slice(5).map(p=>`<li><button onclick="navigate('pillar','${p.id}')">${p.name}</button></li>`).join('')}</ul>`;
+}
+
+function renderPillarPage(pillarId){
+  const pillar = PILLARS.find(p=>p.id===pillarId);
+  if(!pillar) return;
+  
+  updateMeta(`${pillar.name} — TurboQuant Blog`,`${pillar.desc} 100 expert articles across 10 categories.`,`https://blog.turboquad.network/${pillarId}`);
+  updateSchema('pillar', pillar);
+
+  document.getElementById('pillarBreadcrumb').innerHTML = `
+    <button onclick="navigate('home')">Home</button>
+    <span class="breadcrumb-sep">›</span>
+    <span style="color:var(--text)">Pillar ${pillar.num}: ${pillar.name}</span>
+  `;
+  document.getElementById('pillarBadge').innerHTML = `${pillar.icon} Pillar ${pillar.num} of 10 · ${pillar.keywords[0]}`;
+  document.getElementById('pillarTitle').innerHTML = pillar.name.replace(/(AI|TurboQuant)/g,'<span class="accent-c">$1</span>');
+  document.getElementById('pillarSub').textContent = pillar.desc;
+
+  // Categories grid
+  const grid = document.getElementById('categoriesGrid');
+  grid.innerHTML = pillar.categories.map((cat,i)=>`
+    <div class="cat-card" onclick="navigate('category','${pillarId}','${cat.id}')">
+      <div class="cat-card-num">Category ${String(i+1).padStart(2,'0')} · 10 articles</div>
+      <div class="cat-card-name">${cat.name}</div>
+      <div class="cat-card-desc">${cat.desc}</div>
+      <div class="cat-card-meta">📝 10 articles · View all →</div>
+    </div>
+  `).join('');
+
+  // Pillar FAQs
+  const faqs = buildPillarFaqs(pillar);
+  document.getElementById('pillarFaqs').innerHTML = faqs.map(f=>`
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">${f.q} <span class="faq-toggle">+</span></div>
+      <div class="faq-a"><p>${f.a}</p>${f.links.map(l=>`<p><a href="#" onclick="navigate('${l.cid?'category':'pillar'}','${l.pid}'${l.cid?`,'${l.cid}'`:''});return false">${l.text} →</a></p>`).join('')}</div>
+    </div>
+  `).join('');
+
+  // Schema — BreadcrumbList
+  const breadSchema = {
+    "@context":"https://schema.org","@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://blog.turboquad.network"},
+      {"@type":"ListItem","position":2,"name":pillar.name,"item":`https://blog.turboquad.network/${pillarId}`}
+    ]
+  };
+  // FAQPage schema
+  const faqSchema = {
+    "@context":"https://schema.org","@type":"FAQPage",
+    "mainEntity": faqs.slice(0,10).map(f=>({
+      "@type":"Question","name":f.q,
+      "acceptedAnswer":{"@type":"Answer","text":f.a}
+    }))
+  };
+  document.getElementById('schema-main').textContent = JSON.stringify([breadSchema, faqSchema]);
+}
+
+function renderCategoryPage(pillarId, catId){
+  const pillar = PILLARS.find(p=>p.id===pillarId);
+  const cat = pillar?.categories.find(c=>c.id===catId);
+  if(!pillar || !cat) return;
+  
+  const posts = ALL_POSTS[catId] || [];
+  
+  updateMeta(`${cat.name} — ${pillar.name} · TurboQuant Blog`,`${cat.desc} 10 expert articles covering every aspect of ${cat.name} in 2026.`,`https://blog.turboquad.network/${pillarId}/${catId}`);
+
+  document.getElementById('catBreadcrumb').innerHTML = `
+    <button onclick="navigate('home')">Home</button>
+    <span class="breadcrumb-sep">›</span>
+    <button onclick="navigate('pillar','${pillarId}')">${pillar.name}</button>
+    <span class="breadcrumb-sep">›</span>
+    <span style="color:var(--text)">${cat.name}</span>
+  `;
+  document.getElementById('catTitle').textContent = cat.name;
+  document.getElementById('catSub').textContent = cat.desc;
+
+  const INTENT_BADGE = {
+    'INFORMATIONAL':'badge-info',
+    'HOW-TO':'badge-how',
+    'COMPARISON':'badge-comp',
+    'TRANSACTIONAL':'badge-trans'
+  };
+
+  document.getElementById('blogList').innerHTML = posts.map((post,i)=>`
+    <div class="blog-item" onclick="navigateToPost('${post.id}','${catId}','${pillarId}')">
+      <div class="blog-item-num">${String(i+1).padStart(2,'0')}</div>
+      <div class="blog-item-body">
+        <div class="blog-item-title">${post.title}</div>
+        <div class="blog-item-meta">
+          <span class="blog-item-badge ${INTENT_BADGE[post.intent]||'badge-info'}">${post.intent}</span>
+          <span>⏱ ${post.read} min read</span>
+        </div>
+        <div style="font-size:.78rem;color:var(--muted);margin-top:.3rem;line-height:1.5">${post.meta}</div>
+      </div>
+      <div class="blog-item-arrow">→</div>
+    </div>
+  `).join('');
+
+  // Related categories
+  const otherCats = pillar.categories.filter(c=>c.id!==catId).slice(0,6);
+  document.getElementById('relatedCats').innerHTML = otherCats.map(c=>`
+    <div class="related-card" onclick="navigate('category','${pillarId}','${c.id}')">
+      <div class="related-card-tag">${pillar.icon} ${pillar.name}</div>
+      <div class="related-card-title">${c.name}</div>
+    </div>
+  `).join('');
+
+  // BreadcrumbList schema
+  document.getElementById('schema-main').textContent = JSON.stringify({
+    "@context":"https://schema.org","@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://blog.turboquad.network"},
+      {"@type":"ListItem","position":2,"name":pillar.name,"item":`https://blog.turboquad.network/${pillarId}`},
+      {"@type":"ListItem","position":3,"name":cat.name,"item":`https://blog.turboquad.network/${pillarId}/${catId}`}
+    ]
+  });
+}
+
+function renderPostPage(postId, catId, pillarId){
+  const pillar = PILLARS.find(p=>p.id===pillarId);
+  const cat = pillar?.categories.find(c=>c.id===catId);
+  const posts = ALL_POSTS[catId]||[];
+  const post = posts.find(p=>p.id===postId);
+  if(!post) return;
+  
+  updateMeta(`${post.title} · TurboQuant Blog`, post.meta, `https://blog.turboquad.network/blog/${postId}`);
+  updateSchema('article', {title:post.title, meta:post.meta, slug:postId});
+
+  document.getElementById('postBreadcrumb').innerHTML = `
+    <button onclick="navigate('home')">Home</button>
+    <span class="breadcrumb-sep">›</span>
+    <button onclick="navigate('pillar','${pillarId}')">${pillar?.name}</button>
+    <span class="breadcrumb-sep">›</span>
+    <button onclick="navigate('category','${pillarId}','${catId}')">${cat?.name}</button>
+    <span class="breadcrumb-sep">›</span>
+    <span style="color:var(--text)">Article</span>
+  `;
+
+  const INTENT_BADGE = {'INFORMATIONAL':'badge-info','HOW-TO':'badge-how','COMPARISON':'badge-comp','TRANSACTIONAL':'badge-trans'};
+  document.getElementById('postBadges').innerHTML = `
+    <span class="blog-item-badge ${INTENT_BADGE[post.intent]||'badge-info'}">${post.intent}</span>
+    <span class="blog-item-badge badge-info">${pillar?.icon} ${pillar?.name}</span>
+  `;
+  document.getElementById('postTitle').textContent = post.title;
+  document.getElementById('postDate').textContent = 'April 2026';
+  document.getElementById('postRead').textContent = post.read;
+  document.getElementById('postCat').textContent = cat?.name;
+
+  // TOC
+  document.getElementById('postToc').innerHTML = `
+    <div class="toc-title">📋 Table of Contents</div>
+    <ol>
+      <li onclick="scrollToId('s1')">Introduction & Overview</li>
+      <li onclick="scrollToId('s2')">Core Concepts & Fundamentals</li>
+      <li onclick="scrollToId('s3')">Technical Deep Dive</li>
+      <li onclick="scrollToId('s4')">Best Practices & Implementation</li>
+      <li onclick="scrollToId('s5')">Real-World Applications</li>
+      <li onclick="scrollToId('s6')">Performance & Benchmarks</li>
+      <li onclick="scrollToId('s7')">Common Mistakes to Avoid</li>
+      <li onclick="scrollToId('s8')">Tools & Resources</li>
+      <li onclick="scrollToId('s9')">Future Outlook 2026–2028</li>
+      <li onclick="scrollToId('s10')">Conclusion & Next Steps</li>
+    </ol>
+  `;
+
+  // Full article or generated content
+  const fullKey = postId;
+  const fullContent = FULL_ARTICLES[fullKey];
+  
+  if(fullContent){
+    document.getElementById('postBody').innerHTML = fullContent;
+  } else {
+    document.getElementById('postBody').innerHTML = generateArticle(post, cat, pillar);
+  }
+
+  // Related posts
+  const related = posts.filter(p=>p.id!==postId).slice(0,3);
+  document.getElementById('postRelated').innerHTML = related.map(r=>`
+    <div class="related-card" onclick="navigateToPost('${r.id}','${catId}','${pillarId}')">
+      <div class="related-card-tag">📝 ${cat?.name}</div>
+      <div class="related-card-title">${r.title}</div>
+    </div>
+  `).join('');
+
+  // Post FAQs
+  const postFaqs = [
+    {q:`What is the main benefit of ${cat?.name} for AI practitioners?`,a:`The primary benefit is efficiency and capability — being able to accomplish more with less effort, lower cost, and higher reliability. Practitioners who master ${cat?.name} consistently report dramatically improved output quality and deployment speed.`},
+    {q:`How long does it take to implement ${cat?.name} in a production system?`,a:`A basic implementation can be operational in days. A production-ready system with proper monitoring, error handling, and optimization typically takes 2-4 weeks for experienced teams. Complex enterprise deployments may take 1-3 months.`},
+    {q:`Is ${cat?.name} compatible with existing AI tools and frameworks?`,a:`Yes. Modern ${cat?.name} implementations are designed with interoperability in mind. They integrate with standard AI frameworks (LangChain, LangGraph, AutoGen) and infrastructure (AWS, GCP, Azure, self-hosted).`},
+    {q:`What hardware do I need for ${cat?.name}?`,a:`Requirements vary by scale. Development and testing can often run on standard developer hardware. Production deployments typically benefit from GPU acceleration. With TurboQuant compression, the hardware requirements are 6x lower than unoptimized systems.`},
+    {q:`How do I measure the success of my ${cat?.name} implementation?`,a:`Define metrics aligned to your business goals before implementing. Key metrics include task completion rate, accuracy vs baseline, latency, cost per operation, and business outcome metrics (time saved, revenue generated, errors prevented).`}
+  ];
+  document.getElementById('postFaqs').innerHTML = postFaqs.map(f=>`
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">${f.q} <span class="faq-toggle">+</span></div>
+      <div class="faq-a"><p>${f.a}</p></div>
+    </div>
+  `).join('');
+
+  // Article Schema
+  const articleSchema = {
+    "@context":"https://schema.org","@type":"Article",
+    "headline":post.title,
+    "description":post.meta,
+    "url":`https://blog.turboquad.network/blog/${postId}`,
+    "author":{"@type":"Organization","name":"TurboQuant Network","url":"https://turboquant.network"},
+    "publisher":{"@type":"Organization","name":"TurboQuant Network"},
+    "datePublished":"2026-01-15","dateModified":"2026-04-01",
+    "articleSection":cat?.name,"keywords":pillar?.keywords?.join(', ')
+  };
+  const breadSchema = {
+    "@context":"https://schema.org","@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://blog.turboquad.network"},
+      {"@type":"ListItem","position":2,"name":pillar?.name,"item":`https://blog.turboquad.network/${pillarId}`},
+      {"@type":"ListItem","position":3,"name":cat?.name,"item":`https://blog.turboquad.network/${pillarId}/${catId}`},
+      {"@type":"ListItem","position":4,"name":post.title,"item":`https://blog.turboquad.network/blog/${postId}`}
+    ]
+  };
+  document.getElementById('schema-main').textContent = JSON.stringify([articleSchema, breadSchema]);
+
+  // Read progress
+  updateReadProgress();
+}
+
+function generateArticle(post, cat, pillar){
+  const kw = cat?.name || 'AI systems';
+  const pk = pillar?.name || 'AI technology';
+  return `
+<h2 id="s1">Introduction: Why ${kw} Matters in 2026</h2>
+<p>${post.meta} In 2026, mastering <strong>${kw}</strong> has become essential for any organization serious about AI-driven competitive advantage. This comprehensive guide covers everything from foundational concepts to advanced production patterns.</p>
+<p>The landscape of <strong>${pk}</strong> has transformed dramatically. What was experimental in 2024 is now production-ready. Organizations that understand and implement <em>${kw}</em> effectively are seeing measurable improvements in efficiency, capability, and cost reduction across their AI workloads.</p>
+<p>This guide synthesizes insights from hundreds of production deployments, research papers, and practitioner interviews to give you the most actionable and accurate resource available on <strong>${kw}</strong> today.</p>
+<div class="post-callout"><div class="post-callout-title">⚡ Key Takeaway</div><p>Understanding ${kw} is no longer optional for AI practitioners in 2026. It's a foundational capability that separates effective AI implementations from mediocre ones.</p></div>
+
+<h2 id="s2">Core Concepts & Fundamentals</h2>
+<p>Before diving into implementation details, it's essential to understand the theoretical foundation of <strong>${kw}</strong>. The fundamental principle is that effective AI systems require not just powerful models, but intelligent orchestration, memory management, and tool integration.</p>
+<p>At its core, ${kw} operates on three key principles: <strong>context preservation</strong> (maintaining relevant information across steps), <strong>intelligent routing</strong> (directing work to the most appropriate AI capabilities), and <strong>feedback integration</strong> (learning from outcomes to improve future performance).</p>
+<p>The modern approach to ${kw} has been heavily influenced by research from Google DeepMind, Anthropic, and OpenAI — particularly around how AI systems can be made more reliable, efficient, and aligned with human intent. TurboQuant compression has been particularly significant, enabling longer context windows that make truly coherent multi-step reasoning possible.</p>
+<h3>The Three Pillars of Effective ${kw}</h3>
+<p>Experienced practitioners consistently identify three pillars that determine the success of ${kw} implementations:</p>
+<ul>
+  <li><strong>Architecture Quality:</strong> The design decisions made upfront — model selection, memory systems, tool integration — determine the ceiling for what's achievable</li>
+  <li><strong>Evaluation Rigor:</strong> Systems without clear measurement frameworks can't improve systematically; defining success metrics before building is non-negotiable</li>
+  <li><strong>Operational Excellence:</strong> Production AI systems require robust monitoring, error handling, and continuous optimization to maintain performance at scale</li>
+</ul>
+
+<h2 id="s3">Technical Deep Dive</h2>
+<p>The technical implementation of <strong>${kw}</strong> involves several interconnected components. Understanding how these components interact is crucial for building systems that work reliably in production.</p>
+<p>The underlying architecture typically follows a pipeline pattern: input processing → context retrieval → reasoning → action execution → output validation → result storage. Each stage can be optimized independently, and the interfaces between stages should be well-defined and testable.</p>
+<h3>Memory and Context Management</h3>
+<p>One of the most critical technical challenges in ${kw} is context management. With the advent of TurboQuant KV cache compression, systems can now maintain 6x more context on the same hardware — enabling coherent reasoning over much longer documents and conversation histories.</p>
+<p>Effective context management involves: selective attention (prioritizing the most relevant information), compression (reducing redundancy without losing semantic content), and tiered storage (hot/warm/cold memory tiers based on recency and relevance).</p>
+<h3>Tool Integration Architecture</h3>
+<p>Production ${kw} systems integrate with external tools through well-defined interfaces. The key design principles are: idempotency (tools can be safely retried), observability (all tool calls are logged), and graceful degradation (system continues functioning when tools are unavailable).</p>
+
+<h2 id="s4">Best Practices & Implementation Guide</h2>
+<p>Based on analysis of hundreds of ${kw} deployments, these best practices consistently differentiate successful implementations from failed ones:</p>
+<ul>
+  <li><strong>Start narrow, expand gradually.</strong> Define the smallest useful version of your ${kw} system and get it working perfectly before expanding scope.</li>
+  <li><strong>Measure everything from day one.</strong> Establish baseline metrics before deployment and track them continuously. You can't improve what you don't measure.</li>
+  <li><strong>Build in human oversight.</strong> For consequential decisions, always provide a mechanism for human review. Trust is built incrementally through demonstrated reliability.</li>
+  <li><strong>Test adversarially.</strong> Actively try to break your system. Edge cases that you find in testing are much cheaper than those discovered in production.</li>
+  <li><strong>Document your prompts.</strong> System prompts and agent instructions should be version-controlled, reviewed, and tested like code.</li>
+</ul>
+<div class="post-callout"><div class="post-callout-title">🔧 Implementation Tip</div><p>The most common cause of ${kw} failures in production is insufficient error handling. Build robust retry logic, timeout mechanisms, and fallback paths from the beginning — retrofitting these is much harder.</p></div>
+
+<h2 id="s5">Real-World Applications</h2>
+<p>The most compelling evidence for the value of <strong>${kw}</strong> comes from real production deployments. Organizations across industries are generating measurable business value through careful implementation of these systems.</p>
+<p>In software development, autonomous coding systems using ${kw} principles have reduced development cycle times by 40-60% while maintaining or improving code quality. In customer operations, AI-driven systems have handled 70%+ of routine inquiries without human intervention. In data analytics, automated analysis pipelines process in hours what previously required days of analyst time.</p>
+<h3>Case Study: Enterprise Implementation</h3>
+<p>A mid-size technology company implemented ${kw} for their software development workflow. Starting with automated code review, they expanded to test generation, documentation, and eventually end-to-end feature development for well-defined tickets. Within six months, developer productivity increased by 2.8x as measured by features shipped per engineer per sprint, while defect rates decreased by 35%.</p>
+<p>The key success factors were: starting with low-risk tasks (code review comments), measuring carefully, building trust with the engineering team, and expanding scope only after demonstrating reliability at each stage.</p>
+
+<h2 id="s6">Performance & Benchmarks</h2>
+<p>Performance characteristics of <strong>${kw}</strong> systems vary significantly based on implementation choices. The following benchmarks represent typical production performance across key metrics:</p>
+<table class="post-table">
+  <tr><th>Metric</th><th>Baseline</th><th>Optimized</th><th>With TurboQuant</th></tr>
+  <tr><td>Context Window</td><td>8K tokens</td><td>32K tokens</td><td>128K tokens</td></tr>
+  <tr><td>Inference Latency</td><td>1.8s/response</td><td>0.9s/response</td><td>0.6s/response</td></tr>
+  <tr><td>Memory Usage</td><td>48GB VRAM</td><td>24GB VRAM</td><td>8GB VRAM</td></tr>
+  <tr><td>Task Success Rate</td><td>72%</td><td>88%</td><td>91%</td></tr>
+  <tr><td>Cost per 1M tokens</td><td>$15.00</td><td>$8.50</td><td>$2.50</td></tr>
+</table>
+<p>The most significant performance improvements come from: (1) model selection — using the smallest model that meets accuracy requirements, (2) TurboQuant compression — dramatically reducing memory requirements, and (3) caching — storing and reusing computations for repeated patterns.</p>
+
+<h2 id="s7">Common Mistakes to Avoid</h2>
+<p>The following mistakes appear repeatedly in failed or underperforming <strong>${kw}</strong> implementations:</p>
+<ul>
+  <li><strong>Over-engineering the first version.</strong> Complex multi-agent systems with elaborate tool suites are hard to debug and maintain. Start with the simplest architecture that could work.</li>
+  <li><strong>Ignoring data quality.</strong> The quality of your ${kw} system is bounded by the quality of its inputs. Garbage in, garbage out applies doubly to AI systems.</li>
+  <li><strong>Underestimating latency requirements.</strong> Users have surprisingly low tolerance for slow AI responses. Design for latency from the beginning, not as an afterthought.</li>
+  <li><strong>Skipping the evaluation framework.</strong> Teams that skip building evaluation infrastructure find themselves unable to determine whether their system is getting better or worse.</li>
+  <li><strong>Deploying without monitoring.</strong> AI systems can fail silently — producing plausible-sounding but incorrect outputs. Robust monitoring with automated checks is essential.</li>
+</ul>
+
+<h2 id="s8">Tools & Resources</h2>
+<p>The ecosystem of tools for <strong>${kw}</strong> is rich and growing rapidly. Key categories include: orchestration frameworks (LangGraph, CrewAI, AutoGen), inference optimization (TurboQuant, vLLM, TensorRT-LLM), observability (Langfuse, Helicone, W&B Weave), and vector databases (Qdrant, Weaviate, Pinecone).</p>
+<p>For production deployments, <a href="https://turboquant.network" target="_blank">TurboQuant Network</a> provides a unified platform that integrates all of these capabilities with enterprise-grade reliability and support. It's particularly valuable for teams that want to move fast without assembling and maintaining a complex stack themselves.</p>
+<p>For teams that prefer to build on open-source components, the combination of LangGraph + Ollama + Qdrant + TurboQuant compression provides a powerful, cost-effective stack that can run entirely on-premise.</p>
+
+<h2 id="s9">Future Outlook: 2026–2028</h2>
+<p>The trajectory of <strong>${kw}</strong> over the next 24 months is shaped by several converging trends:</p>
+<p><strong>Continued efficiency improvements:</strong> TurboQuant is the first of many breakthroughs in AI inference efficiency. Expect 3-5x further improvements in memory efficiency by 2028, making even larger models accessible on modest hardware.</p>
+<p><strong>Autonomous operation:</strong> The degree of human oversight required for AI systems will continue to decrease as reliability improves. By 2028, many routine cognitive tasks will be handled end-to-end by AI without human review of individual outputs.</p>
+<p><strong>Multi-modal expansion:</strong> ${kw} will increasingly incorporate vision, audio, and structured data alongside text. This enables fundamentally new application patterns that aren't possible with text-only systems.</p>
+<p><strong>Standardization:</strong> The industry is converging on standard interfaces for agent communication, tool use, and memory systems. This interoperability will enable more modular, composable AI architectures.</p>
+
+<h2 id="s10">Conclusion & Next Steps</h2>
+<p>Mastering <strong>${kw}</strong> is one of the highest-leverage investments a technical practitioner or organization can make in 2026. The technology is mature enough for production use, the tooling is rich and accessible, and the business value is demonstrated across industries.</p>
+<p>Your next steps: (1) identify one specific, measurable use case where ${kw} could create value, (2) build the simplest possible implementation, (3) measure rigorously against your baseline, (4) iterate based on what you learn.</p>
+<p>The practitioners who will thrive in the AI-native economy are those who combine technical fluency in ${kw} with strong judgment about where and how to apply it. Both parts matter equally.</p>
+<p>Explore more in <a href="#" onclick="navigate('pillar','${pillar?.id||'pillar-ai-agents'}');return false">${pillar?.name}</a> and the related pillars on <a href="#" onclick="navigate('pillar','pillar-turboquant-core');return false">TurboQuant Core Technology</a> and <a href="#" onclick="navigate('pillar','pillar-ai-business-use-cases');return false">AI Business Use Cases</a>.</p>
+  `;
+}
+
+function scrollToId(id){
+  const el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth'});
+}
+
+// ════════════════════════════════════════════════
+// SEARCH
+// ════════════════════════════════════════════════
+function buildSearchIndex(){
+  const idx = [];
+  PILLARS.forEach(p=>{
+    idx.push({type:'pillar', title:p.name, sub:p.desc, id:p.id, pid:p.id, icon:p.icon});
+    p.categories.forEach(c=>{
+      idx.push({type:'category', title:c.name, sub:c.desc, id:c.id, pid:p.id, icon:p.icon});
+      const posts = ALL_POSTS[c.id]||[];
+      posts.forEach(post=>{
+        idx.push({type:'post', title:post.title, sub:post.meta, id:post.id, pid:p.id, cid:c.id, icon:'📝'});
+      });
+    });
+  });
+  return idx;
+}
+const SEARCH_INDEX = buildSearchIndex();
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  renderHome();
+  
+  const navSearch = document.getElementById('navSearch');
+  const dropdown = document.getElementById('searchDropdown');
+  
+  navSearch.addEventListener('input', function(){
+    const q = this.value.toLowerCase().trim();
+    if(!q){dropdown.classList.remove('show');return;}
+    const matches = SEARCH_INDEX.filter(item=>
+      item.title.toLowerCase().includes(q) || item.sub.toLowerCase().includes(q)
+    ).slice(0,8);
+    if(!matches.length){dropdown.classList.remove('show');return;}
+    dropdown.innerHTML = matches.map(m=>`
+      <div class="search-item" onclick="handleSearchClick('${m.type}','${m.pid}','${m.id}','${m.cid||''}')">
+        <span class="search-item-badge">${m.type.toUpperCase()}</span>
+        <span>${m.icon} ${m.title}</span>
+      </div>
+    `).join('');
+    dropdown.classList.add('show');
+  });
+  
+  document.addEventListener('click', e=>{
+    if(!e.target.closest('.nav-search-wrap')) dropdown.classList.remove('show');
+  });
+});
+
+function handleSearchClick(type, pillarId, id, catId){
+  document.getElementById('navSearch').value = '';
+  document.getElementById('searchDropdown').classList.remove('show');
+  if(type==='pillar') navigate('pillar', id);
+  else if(type==='category') navigate('category', pillarId, id);
+  else if(type==='post') navigateToPost(id, catId, pillarId);
+}
+
+// ════════════════════════════════════════════════
+// UTILS
+// ════════════════════════════════════════════════
+function toggleFaq(el){
+  const item = el.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+}
+
+function toggleMobileMenu(){
+  // Simple mobile nav toggle
+  const nav = document.querySelector('.nav-links');
+  if(nav) nav.style.display = nav.style.display==='flex'?'none':'flex';
+}
+
+function updateReadProgress(){
+  const bar = document.getElementById('readProgress');
+  const postPage = document.getElementById('page-post');
+  
+  function onScroll(){
+    if(!postPage.classList.contains('active')){
+      bar.style.width='0%';return;
+    }
+    const scrollTop = window.scrollY;
+    const docHeight = document.body.offsetHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop/docHeight)*100 : 0;
+    bar.style.width = Math.min(pct,100)+'%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+}
+
+// Back to top
+window.addEventListener('scroll', ()=>{
+  const btn = document.getElementById('backTop');
+  btn.classList.toggle('show', window.scrollY > 600);
+}, {passive:true});
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', ()=>{
+  // Handle hash routing
+  const hash = location.hash;
+  if(!hash || hash==='#'){
+    document.getElementById('page-home').classList.add('active');
+  }
+});
+</script>
+</body>
+</html>

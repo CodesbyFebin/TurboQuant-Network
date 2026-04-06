@@ -1,0 +1,61 @@
+---
+interface Props {
+  icon: string;
+  title: string;
+  description: string;
+  tags?: string[];
+  link?: string;
+  linkText?: string;
+  accent?: string;
+  glow?: string;
+}
+
+const {
+  icon,
+  title,
+  description,
+  tags = [],
+  link = "#",
+  linkText = "Learn More →",
+  accent = "var(--accent)",
+  glow = "var(--glow-g)",
+} = Astro.props;
+---
+
+<article class="card" style={`--card-accent: ${accent}`}>
+  <div class="card-icon" style={`background: ${glow}; border-color: ${accent}33;`}>
+    {icon}
+  </div>
+  <h3>{title}</h3>
+  <p>{description}</p>
+  {
+    tags.length > 0 && (
+      <div class="tags">
+        {tags.map((t) => (
+          <span class="tag">{t}</span>
+        ))}
+      </div>
+    )
+  }
+  {
+    link && (
+      <a href={link} class="card-link" style={`color: ${accent}`}>
+        {linkText}
+      </a>
+    )
+  }
+</article>
+
+<style>
+  .card-link {
+    margin-top: 14px;
+    display: inline-block;
+    font-size: 0.83rem;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    transition: opacity 0.2s;
+  }
+  .card-link:hover {
+    opacity: 0.8;
+  }
+</style>

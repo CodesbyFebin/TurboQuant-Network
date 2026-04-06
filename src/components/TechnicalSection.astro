@@ -1,0 +1,32 @@
+---
+interface Props {
+  title: string;
+  tag: string;
+  content: { h3: string; p: string }[];
+}
+
+const { title, tag, content } = Astro.props;
+---
+
+<section class="section">
+  <div class="section-inner">
+    <div class="center">
+      <div class="s-tag">{tag}</div>
+      <h2 class="s-h2">{title}</h2>
+    </div>
+    <div class="content-body" style="max-width: 960px; margin: 40px auto 0;">
+      {
+        content.map((item) => (
+          <>
+            <h3 style="margin: 32px 0 12px; font-family: var(--font-display); font-size: 1.4rem; color: var(--text);">
+              {item.h3}
+            </h3>
+            <p style="margin-bottom: 20px; line-height: 1.8; color: var(--text2); font-size: 1.02rem;">
+              {item.p}
+            </p>
+          </>
+        ))
+      }
+    </div>
+  </div>
+</section>

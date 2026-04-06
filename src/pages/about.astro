@@ -1,0 +1,109 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import FaqSection from "../components/FaqSection.astro";
+import TechnicalSection from "../components/TechnicalSection.astro";
+import Footer from "../components/Footer.astro";
+import { aboutFaqs } from "../data/faqs";
+
+const mainContent = [
+  {
+    h2: "DePIN Architecture: Democratizing Global AI Compute",
+    p: "TurboQuant aggregates GPU and CPU power from global nodes to perform AI inference at <strong>85% lower costs</strong> than AWS or GCP. This is the bedrock of the <strong>TurboQuant AI Work OS</strong>. Learn how to <a href='/about'>Run a Node</a> to earn $EDGE tokens."
+  },
+  {
+    h3: "The $EDGE Utility on the Solana Blockchain",
+    p: "At the heart of our OS is the <strong>$EDGE token</strong>. $EDGE is used to pay for mission-critical AI tasks on our <a href='/ai-agent-platform'>Agent Platform</a>. Staking $EDGE enables <strong>Governance Rights</strong> in the TurboQuant DAO."
+  },
+  {
+    h4: "Integrating Enterprise Grade Compliance and SoC2 Security",
+    p: "Enterprise AI requires rigorous standards. The TurboQuant protocol satisfies <strong>GDPR and HIPAA</strong> requirements. Our <strong>Data Sovereignty SDK</strong> ensures that every file read or write stays 100% private to the client VPC. Check our <a href='/privacy-policy'>Full Compliance Policy</a>."
+  },
+  {
+    h5: "Global Expansion and the 2026 Roadmap Mission",
+    p: "By Q4 2026, the <strong>DePIN network</strong> will reach 100,000 active compute nodes. This global expansion will enable the first <strong>Industrial Edge AI networks</strong>. View the <a href='/roadmap'>Project Roadmap</a> for a detailed quarterly breakdown."
+  }
+];
+
+const technicalSpecs = [
+  ...mainContent.map(c => ({ h3: c.h2 || c.h3 || c.h4, p: c.p }))
+];
+---
+
+<BaseLayout 
+  title="About DePIN & $EDGE Token – TurboQuant AI OS 2026"
+  description="Learn about the decentralized physical infrastructure and token economy powering the TurboQuant network."
+  canonical="https://turboquant.network/about"
+>
+  <Navbar activePage="about" />
+
+  <main>
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About DePIN & $EDGE" }]} />
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="center" style="margin-bottom: 56px;">
+          <div class="s-tag">About TurboQuant</div>
+          <h1 class="s-h1">Democratizing <span class="hi">Autonomous</span> Intelligence</h1>
+          <p class="s-sub">A decentralized physical infrastructure network (DePIN) disrupting the AI cost-barrier on Solana.</p>
+          <div class="cta-actions center" style="margin-top: 32px">
+            <button class="btn-primary" onclick="notify('🚀 Accessing Solana Node Portal...')">Run a Node →</button>
+            <a href="/roadmap" class="btn-ghost" style="margin-left: 12px">View Tech Roadmap</a>
+          </div>
+        </div>
+
+        <div class="grid-3" style="margin-bottom: 48px;">
+           <FeatureCard 
+              icon="⛏️" title="Node Rewards" 
+              description="Contribute idle GPU power and earn $EDGE tokens every 120-minute epoch."
+              tags={["Node", "Earnings", "Rewards"]}
+           />
+           <FeatureCard 
+              icon="🪙" title="$EDGE Utility" 
+              description="Pay for AI compute, stake for governance, and earn rewards via Solana micropayments."
+              tags={["Solana", "DEX", "Staking"]}
+           />
+           <FeatureCard 
+              icon="🏆" title="DAO Governance" 
+              description="Vote on protocol upgrades and the future of the decentralized AI Work OS."
+              tags={["DAO", "Governance", "Voting"]}
+           />
+        </div>
+
+        <article class="technical-deep-dive">
+           {mainContent.map(section => (
+              <div class="content-block">
+                 {section.h2 && <h2 class="s-h2" style="font-size: 1.8rem; margin-top:40px">{section.h2}</h2>}
+                 {section.h3 && <h3 class="s-h2" style="font-size: 1.5rem; margin-top:30px">{section.h3}</h3>}
+                 {section.h4 && <h4 class="s-h2" style="font-size: 1.3rem; margin-top:25px">{section.h4}</h4>}
+                 {section.h5 && <h5 class="s-h2" style="font-size: 1.1rem; margin-top:20px">{section.h5}</h5>}
+                 <p style="font-size: 1rem; color: var(--text2); line-height: 1.8; margin-top: 15px;" set:html={section.p} />
+              </div>
+           ))}
+        </article>
+
+        <TechnicalSection tag="The Ecosystem" title="Disrupting Centralized Compute Monopolies" content={technicalSpecs} />
+
+        <FaqSection id="about-faq" faqs={aboutFaqs} />
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .s-h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+  .technical-deep-dive {
+    max-width: 900px;
+    margin: 80px auto;
+  }
+</style>
