@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-# TurboQuant-Network
-The World's Most Powerful AI Agent Platform Build autonomous AI agents that plan, execute, and deliver real work 24/7.
-=======
-<<<<<<< HEAD
-# TurboQuant-Network
-The World's Most Powerful AI Agent Platform Build autonomous AI agents that plan, execute, and deliver real work 24/7.
-=======
 # TurboQuant Network (Astro Edition)
 
 High-performance, SEO-optimized AI agent platform website built with Astro.
@@ -48,5 +40,3 @@ Build for production:
 ```bash
 npm run build
 ```
->>>>>>> 7552887 (🚀 TurboQuant v4.4 — Platinum SEO, Multilingual & Voice Lab Integration)
->>>>>>> 0d7fd14 (Initial committ)
